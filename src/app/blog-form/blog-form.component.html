@@ -1,0 +1,29 @@
+<div>
+  <h1 class=" text-center mt-5 text-primary">Blogging Website</h1>
+  <h6 class=" text-center  text-primary">Create your own blogs</h6>
+  <div class="contact-form-wrapper d-flex justify-content-center">
+
+    <form [formGroup]="blogForm" (ngSubmit)="formSubmit()" class="contact-form">
+      <h2 class="title mb-5 text-secondary">CREATE BLOG</h2>
+
+      <div class="container col-md-16">
+        <div>
+          <h6 class="">Choose Image</h6>
+            <input class="form-control" type="file" id="formFile" >
+            <button  class="btn btn-primary mt-3">Upload</button>
+        </div>
+        <img id="frame" src="" class="img-fluid" />
+      </div>
+      <div>
+        <input type="text" class="form-control rounded border-white mb-3 form-input" formControlName="title" id="name" placeholder="Enter title..." required/>
+
+      </div>
+      <div>
+        <textarea id="message" class="form-control rounded border-white mb-3 form-text-area" formControlName="description" rows="8" cols="30" placeholder="Write Description..." required></textarea>
+      </div>
+      <div class="submit-button-wrapper">
+        <input type="submit" [disabled]="blogForm.invalid" value="Submit">
+      </div>
+    </form>
+  </div>
+</div> -->

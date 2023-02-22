@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import {FormGroup,FormControl,Validators} from '@angular/forms';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-blog-form',
+  templateUrl: './blog-form.component.html',
+  styleUrls: ['./blog-form.component.css']
 })
+
 export class AppComponent {
   blogForm = new FormGroup({
    title : new FormControl('',[Validators.required,Validators.email]),
@@ -21,3 +22,4 @@ get(){
   return this.blogForm.get('title')
 }
 }
+
