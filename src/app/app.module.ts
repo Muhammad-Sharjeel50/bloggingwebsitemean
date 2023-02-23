@@ -11,6 +11,7 @@ import { BlogCardComponent } from './blog-card/blog-card.component';
 // import { AdminPnnelComponent } from './admin-pnnel/admin-pnnel.component';
 import { AdminPannelComponent } from './admin-pannel/admin-pannel.component';
 import { LoginAdminButtonComponent } from './login-admin-button/login-admin-button.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginAdminButtonComponent } from './login-admin-button/login-admin-butt
     // BlogFormComponent,
     // AdminPnnelComponent,
     AdminPannelComponent,
-    LoginAdminButtonComponent
+    LoginAdminButtonComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

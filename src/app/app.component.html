@@ -1,10 +1,11 @@
-<!--
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
 <div>
   <h1 class=" text-center mt-5 text-primary">Blogging Website</h1>
   <h6 class=" text-center  text-primary">Create your own blogs</h6>
   <div class="contact-form-wrapper d-flex justify-content-center">
 
-    <form [formGroup]="blogForm" (ngSubmit)="formSubmit()" class="contact-form">
+    <form   class="contact-form">
       <h2 class="title mb-5 text-secondary">CREATE BLOG</h2>
 
       <div class="container col-md-16">
@@ -23,11 +24,11 @@
         <textarea id="message" class="form-control rounded border-white mb-3 form-text-area" formControlName="description" rows="8" cols="30" placeholder="Write Description..." required></textarea>
       </div>
       <div class="submit-button-wrapper">
-        <input type="submit" [disabled]="blogForm.invalid" value="Submit">
+        <input type="submit"  value="Submit">
       </div>
     </form>
   </div>
-</div> -->
+</div>
 <!-- <div class="container ">
 	<div class="registration mt-5  mx-auto d-block border p-4 rounded border-2 border-black w-100">
 		<div class="page-header text-center">
@@ -152,8 +153,8 @@
 </div> -->
 
 <!-- Login as user or admin -->
-<div class="btn-wrap admin-login">
+<!-- <div class="btn-wrap admin-login">
   <h3>Welcome to Blogging</h3>
 	<label for="">Login as Author</label><button class="login-btn1">Author</button>
 	<label for="">Login as User</label><button class="login-btn1">User</button>
-<div>
+<div> -->

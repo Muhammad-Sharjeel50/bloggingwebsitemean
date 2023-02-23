@@ -6,18 +6,23 @@ import {FormGroup,FormControl,Validators} from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  blogForm = new FormGroup({
-   title : new FormControl('',[Validators.required,Validators.email]),
-   description : new FormControl(''),
-  })
-  title = 'bloggingapplication';
+//   blogForm = new FormGroup({
+//    title : new FormControl('',[Validators.required,Validators.email]),
+//    description : new FormControl(''),
+//   })
+//   title = 'bloggingapplication';
 
 
-formSubmit(){
-  console.log(this.blogForm.value)
-}
+// formSubmit(){
+//   console.log(this.blogForm.value)
+// }
 
-get(){
-  return this.blogForm.get('title')
+// get(){
+//   return this.blogForm.get('title')
+// }
+
+onSubmit(data:any)
+{
+  console.log(data);
 }
 }
