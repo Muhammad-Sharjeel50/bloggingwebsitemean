@@ -14,7 +14,7 @@ export class SignupFormComponent {
   })
  }
  LoginUser(data:any){
-  console.log(data);
+  console.warn(data);
   this.userData.saveUser(data).subscribe((result)=>{
     console.log(result)})
 }
