@@ -1,48 +1,86 @@
-<app-navbar></app-navbar>
-<div class="row m-4 row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card">
-      <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill"/>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          This is a longer card with supporting text below as a natural lead-in to
-          additional content. This content is a little bit longer.
-        </p>
-      </div>
+
+<div class="bg-white">
+<div class="block ">
+  <div class="block-content">
+    <p class="block-text fade-animation mt-2">
+    
+    </p>
+  </div>
+</div>
+
+
+
+
+<div class="w-100">
+  <div class="block ">
+    <div class="block-content">
+      <p class="block-text fade-animation mt-5">
+        Explore the Blogs here!
+      </p>
     </div>
   </div>
-  <div class="col">
-    <div class="card">
-      <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/042.webp" class="card-img-top" alt="Palm Springs Road"/>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          This is a longer card with supporting text below as a natural lead-in to
-          additional content. This content is a little bit longer.
-        </p>
-      </div>
+  <div class="row row-cols-lg m-5">
+    <div class="col-md-4" *ngFor="let blog of userList; let i=index">
+      <div class="card mb-4">
+        <img src="http://localhost:8080/upload/{{blog.image}}" class="card-img-top" alt="Hollywood Sign on The Hill" />
+        <div class="card-body bg-gradient">
+          <h5 class="card-title">{{blog.title}}</h5>
+          <p class="card-text overflow-hidden">{{blog.description}}</p>
+          <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-secondary btn-fullwidth" (click)="navigateToBlogDetails(blog)">
+              Read More 
+            </button>
+          </div>
+        </div>
+      </div>  
+      <!-- Modal -->
+      <!-- <div class="modal fade " id="exampleModal{{i}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content w-100">
+            <img src="http://localhost:8080/upload/{{blog.image}}" class="card-img-top" alt="Hollywood Sign on The Hill" />
+            <div class="modal-header">
+              <h5 class="modal-title poster-title" id="exampleModalLabel">{{blog.title}}</h5>
+             
+            </div>
+            <div class="modal-body ">
+              {{blog.description}}
+            </div>
+            <div class="">
+              <button type="button" class="btn btn-primary btn-fullwidth" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      
     </div>
   </div>
-  <div class="col">
-    <div class="card">
-      <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp" class="card-img-top" alt="Los Angeles Skyscrapers"/>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top" alt="Skyscrapers"/>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          This is a longer card with supporting text below as a natural lead-in to
-          additional content. This content is a little bit longer.
-        </p>
+</div>
+
+
+
+  <!-- //model for readmore -->
+  
+  <div class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="myModalLabel">Full Text</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            This is the full text that was hidden. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Vestibulum sed erat vel lectus bibendum
+            vestibulum. Duis vel justo eu sapien scelerisque viverra. Ut venenatis
+            nulla vitae ante aliquet, eget faucibus nisi fringilla.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
