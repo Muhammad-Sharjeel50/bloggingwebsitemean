@@ -12,10 +12,7 @@ import { BlogCardComponent } from './blog-card/blog-card.component';
 import { AdminPannelComponent } from './admin-pannel/admin-pannel.component';
 import { LoginAdminButtonComponent } from './login-admin-button/login-admin-button.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from "@angular/common/http";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,16 +24,12 @@ import {HttpClientModule} from "@angular/common/http";
     // AdminPnnelComponent,
     AdminPannelComponent,
     LoginAdminButtonComponent,
-    NavbarComponent,
-    AboutComponent,
-    ContactComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
