@@ -1,37 +1,75 @@
-<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
-    <div class="container">
-      <div class="navbar-header">
-        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="./" class="navbar-brand">Bootstrap Menu</a>
-      </div>
-      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Mission</a></li>
-              <li><a href="#">Vision</a></li>
-              <li><a href="#">Careers</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Products</a>
-          </li>
-          <li>
-            <a href="#">Services</a>
-          </li>
-          <li class="active">
-            <a href="#">Contact</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<router-outlet></router-outlet>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<a href="#" class="navbar-brand">Blog<b>ging</b></a>
+	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<!-- Collection of nav links, forms, and other content for toggling -->
+	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-between">
+		<div class="navbar-nav">
+			<a href="home" class="nav-item nav-link">Home</a>
+			<a href="about" class="nav-item nav-link">About</a>
+
+
+			<!-- <a href="#" class="nav-item nav-link active">Pricing</a> -->
+			<a href="home" class="nav-item nav-link">Blog</a>
+			<a href="contactus" class="nav-item nav-link">Contact</a>
+		</div>
+		<!-- <form class="navbar-form form-inline">
+			<div class="input-group search-box">
+				<input type="text" id="search" class="form-control" placeholder="Search here...">
+				<div class="input-group-append">
+					<span class="input-group-text">
+						<i class="material-icons">&#xE8B6;</i>
+					</span>
+				</div>
+			</div>
+		</form> -->
+		<div class="navbar-nav justify-content-end ml-auto action-buttons">
+			<div class="nav-item  dropdown">
+				<a href="/" data-toggle="dropdown" class="nav-link dropdown-toggle mr-4">Login</a>
+                <div class="dropdown-menu action-form">
+					<form action="/examples/actions/confirmation.php" method="post">
+						<p class="hint-text">Sign in with your social media account</p>
+						<div class="form-group social-btn clearfix">
+							<a href="#" class="btn btn-secondary facebook-btn float-left"><i class="fa fa-facebook"></i> Facebook</a>
+							<a href="#" class="btn btn-secondary twitter-btn float-right"><i class="fa fa-twitter"></i> Twitter</a>
+						</div>
+						<div class="or-seperator"><b>or</b></div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Username" required="required">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" placeholder="Password" required="required">
+						</div>
+						<input type="submit" class="btn btn-primary btn-block" value="Login">
+						<div class="text-center mt-2">
+							<a href="#">Forgot Your password?</a>
+						</div>
+					</form>
+                </div>
+			</div>
+			<div class="nav-item dropdown">
+				<a href="signup" data-toggle="dropdown" class="btn btn-primary dropdown-toggle sign-up-btn">Sign up</a>
+                <div class="dropdown-menu action-form">
+					<form action="/examples/actions/confirmation.php" method="post">
+						<p class="hint-text">Fill in this form to create your account!</p>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Username" required="required">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" placeholder="Password" required="required">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" placeholder="Confirm Password" required="required">
+						</div>
+						<div class="form-group">
+							<label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms &amp; Conditions</a></label>
+						</div>
+						<input type="submit" class="btn btn-primary btn-block" value="Sign up">
+					</form>
+				</div>
+			</div>
+        </div>
+	</div>
+</nav>
