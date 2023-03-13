@@ -15,7 +15,7 @@ export class AuthorCRUDComponent {
   title:any;
   description:any;
   image:any;
-   
+   user :any;
  
   // id:any = "64003b2d775065fc26cd9932";
   dataId:any = localStorage.getItem('token');
@@ -31,6 +31,10 @@ export class AuthorCRUDComponent {
     
    this.getuserList();
    console.log("dataId",this.userList);
+   
+   
+   
+  
   }
   getuserList():any{
 const token = localStorage.getItem('token');
@@ -154,5 +158,7 @@ const headers = new HttpHeaders().set('Authorization', `${token}`);
       autohide: true
     });
   }
-  
+  showProfile(){
+ 
+  } 
 }
