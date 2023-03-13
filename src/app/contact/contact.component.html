@@ -21,41 +21,56 @@
 				</div>
 			</div>
 			<div class="form-contact">
-				<form>
+				<form (ngsubmit)="submit(contactForm.value)" #contactForm="ngForm">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="single-input">
 								<i class="fas fa-user"></i>
-								<input type="text" name="name" placeholder="ENTER YOUR NAME">
+								<input type="text" id="name" name="name" class="form-control"  [(ngModel)]="name" name="name" required placeholder="ENTER YOUR NAME">
 							</div>
+							<span *ngIf="name && name.trim().length <5 " class="text-danger"  data-ng-message="name">
+								Name is Required
+							 </span>
 						</div>
 						<div class="col-md-6">
 							<div class="single-input">
 								<i class="fas fa-envelope"></i>
-								<input type="text" name="email" placeholder="ENTER YOUR EMAIL">
+								<input type="email" id="email" name="email" class="form-control"  [(ngModel)]="email" name="email" placeholder="ENTER YOUR EMAIL" required>
 							</div>
+							<span *ngIf="email && email.trim().length <5 " class="text-danger"  data-ng-message="email">
+                                email is Required
+                             </span>
 						</div>
 						<div class="col-md-6">
 							<div class="single-input">
 								<i class="fas fa-phone"></i>
-								<input type="text" name="phoneNumber" placeholder="ENTER YOUR PHONE NUMBER">
+								<input type="text" name="number" id="number" name="number" class="form-control"  [(ngModel)]="number" name="number" placeholder="ENTER YOUR PHONE NUMBER" required>
 							</div>
+							<span *ngIf="number && number.trim().length <5 " class="text-danger"  data-ng-message="number">
+								Number is Required
+							 </span>
 						</div>
 						<div class="col-md-6">
 							<div class="single-input">
 								<i class="fas fa-check"></i>
-								<input type="text" name="subject" placeholder="ENTER YOUR SUBJECT">
+								<input type="text" id="subject" name="subject" class="form-control"  [(ngModel)]="subject" name="subject" placeholder="ENTER YOUR SUBJECT" required>
 							</div>
+							<span *ngIf="subject && subject.trim().length <5 " class="text-danger"  data-ng-message="subject">
+								subject is Required
+							 </span>
 						</div>
 						<div class="col-12">
 							<div class="single-input">
 								<i class="fas fa-comment-dots"></i>
-								<textarea placeholder="ENTER YOUR MESSAGE"></textarea>
+								<textarea placeholder="ENTER YOUR MESSAGE" id="message" name="message" class="form-control"  [(ngModel)]="message"  required></textarea>
 							</div>
+							<span *ngIf="message && message.invalid && message.trim().length <5 " class="text-danger"  data-ng-message="message">
+								message is Required
+							 </span>
 						</div>
 						<div class="col-12">
 							<div class="submit-input text-center">
-								<input type="submit" name="submit" value="SUBMIT NOW">
+								<input type="submit" [disabled]=" contactForm.invalid" (click)="submit(contactForm.value)" name="submit" value="SUBMIT NOW">
 							</div>
 						</div>
 					</div>

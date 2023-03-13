@@ -84,7 +84,7 @@
       transform: none;
   }
   }
-
+  
   /* //for modal readmore */
   
   .modal {
@@ -183,11 +183,11 @@ button:hover, a:hover {
   color: #666;
 }
 
-.card-img-top {
+/* .card-img-top {
   height: 18rem;
   object-fit: cover;
   background-position: center;
-}
+} */
 .read-more {
   width: 100%;
   font-size: 1rem;

@@ -1,0 +1,56 @@
+<script>
+    $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+        </script>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Blogging</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Admin Dashboard</p>
+            <li class="active">
+                <a routerLink="/admin" data-toggle="collapse" aria-expanded="false" >Home</a>  
+            </li>
+            <li>
+                <a routerLink="/approval">Pending Users</a>
+            </li>
+            <li>
+                <a routerLink="/alluser">All Users</a>
+            </li>
+            <li>
+                <a routerLink="/allblog">All Blogs</a>
+            </li>
+           
+            <li>
+                <a (click)="Logout()">Logout</a>
+            </li>
+        </ul>
+
+       
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+             <h1 class="text-center text-primary">Dashboard</h1>
+                <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle</span>
+                </button> -->
+                
+    </div>
+                
+        </nav>
+      <app-admin-pannel></app-admin-pannel>
+       
+    </div>
+</div>
+

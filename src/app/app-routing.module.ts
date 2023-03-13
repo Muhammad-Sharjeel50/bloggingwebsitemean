@@ -13,6 +13,10 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AdminUserApprovalComponent } from './admin-user-approval/admin-user-approval.component';
 import { BlogDescriptionComponent } from './blog-description/blog-description.component';
+import { AdminSidenavbarComponent } from './admin-sidenavbar/admin-sidenavbar.component';
+import { AdminMenubarComponent } from './admin-menubar/admin-menubar.component';
+import { AdminAlluserComponent } from './admin-alluser/admin-alluser.component';
+import { AdminAllblogComponent } from './admin-allblog/admin-allblog.component';
 
 const routes: Routes = [
   {
@@ -50,14 +54,28 @@ const routes: Routes = [
     path : 'form',
     component :AddblogFormComponent
   },
-  {
-    path : 'admin',
-    component :AdminPannelComponent
-  },
+  
+  
   {
     path : 'author',
     component :AuthorCRUDComponent
   },
+  {
+  path : 'admin',
+  component :AdminMenubarComponent
+},
+{
+  path : 'sidebar',
+  component :AdminSidenavbarComponent
+},
+{
+  path : 'allblog',
+  component :AdminAlluserComponent
+},
+{
+  path : 'alluser',
+  component :AdminAllblogComponent
+},
 
 ];
 

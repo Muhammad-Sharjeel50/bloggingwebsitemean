@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../services.service';
 import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css']
 })
 
-export class LoginFormComponent {
+export class LoginFormComponent implements OnInit{
     users  :any;
-    constructor (private userData : ServicesService,private router: Router){
+    constructor (private userData : ServicesService,private router: Router, private toster: ToastrService){
         // this.userData.user().subscribe((data)=>{
         //   this.users = data;
         // })
+       }
+       ngOnInit(){
+        console.log('login');
+        // debugger
+        this.toster.success('Message Success!', 'Title Success!');
        }
        LoginUser(data:any){
         console.warn(data);
@@ -36,7 +43,7 @@ export class LoginFormComponent {
           else if( result.success == false){
             // this.showSuccess();
              alert(result.message);
-             this.router.navigate(['/home'])
+            //  this.router.navigate(['/home'])
           }
           }) 
         }

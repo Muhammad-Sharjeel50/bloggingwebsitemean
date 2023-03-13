@@ -40,6 +40,41 @@
                 </div>
 			</div>
 			<div class="nav-item dropdown">
+				<!-- <button type="button" class="btn bg-white btn-sm btn-outline-primary mr-2 p-2" data-dismiss="modal" data-toggle="modal"  data-target="#editModal">Update Profile</button> -->
+                <!-- <div class="modal fade" id="editModal" tabindex="-1" #myModel role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <h5 class="modal-title" id="editModalLabel">Update Profile</h5>
+						  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+						<div class="modal-body">
+						  <form  #UpdateForm="ngForm">
+							<img  class="card-img-top mb-2" alt="..."/>
+							<div class="custom-file">
+							  <input type="file" id="image" name="image"  (change)="onFileSelected($event)" class="custom-file-input" >
+							  <label class="custom-file-label" for="image">Choose file</label>
+							</div>
+							<div class="form-group">
+							  <label for="editTitle">Name</label>
+							  <input type="text" class="form-control" id="title"   name="title" placeholder="Enter Name" required>
+							</div>
+							<div class="form-group">
+							  <label for="editDescription">Email</label>
+							  <input class="form-control" id="description"   name="description" rows="3" placeholder="Enter Email" required/>
+							</div>
+							<div class="modal-footer">
+							  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							  <input type="submit"   class="btn btn-primary" value="Save Changes"/>
+							</div>
+						  </form>
+						</div>
+						
+					  </div>
+					</div>
+				  </div> -->
 				<button (click)="Logout()" class="btn btn-danger dropdown-toggle sign-up-btn">Logout</button>
                 <div class="dropdown-menu action-form">
 					<form action="/examples/actions/confirmation.php" method="post">

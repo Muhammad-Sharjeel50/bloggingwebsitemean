@@ -1,0 +1,40 @@
+body {
+    height: 100%;
+  }
+  
+  .offcanvas {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1031;
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    visibility: hidden;
+    background-color: #f8f9fa;
+    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+  
+  .offcanvas.show {
+    visibility: visible;
+    transform: translateX(0);
+  }
+  
+  .offcanvas-header {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .offcanvas-title {
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+  
+  .offcanvas-body {
+    flex-grow: 1;
+    padding: 1rem;
+  }
+  

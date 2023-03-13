@@ -31,6 +31,7 @@ export class BlogCardComponent implements OnInit {
   navigateToBlogDetails(blog: any): any {
     // Navigate to the blog details page with the blog data as a parameter
     this.router.navigate([`/blog-details/${blog._id}`], { state: { blog: blog } });
+    window.scroll(0,0);
   }
 
   openModal(index: number) {

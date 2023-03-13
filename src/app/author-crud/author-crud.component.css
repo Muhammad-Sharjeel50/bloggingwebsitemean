@@ -16,6 +16,10 @@
       margin-left: 8px;
       scroll-snap-align: center;
     }
+   
+  }
+  #description{
+    height: 200px;
   }
   .card-description{
     height:120px;

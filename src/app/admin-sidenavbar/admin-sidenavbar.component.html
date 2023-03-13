@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a href="#" class="navbar-brand">Blog<b>ging</b></a>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebar-label">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="sidebar-label">Menu</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav flex-column">
+          <li class="nav-item">
+            <a href="" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/about" class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link">Blog</a>
+          </li>
+          
+        </ul>
+        <hr>
+        <ul class="navbar-nav flex-column">
+          <li class="nav-item">
+            <a href="#" class="nav-link">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Posts</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Comments</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Users</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Settings</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script>
+    var trigger = document.querySelector('.navbar-toggler');
+    var offcanvas = document.querySelector('#sidebar');
+    var backdrop = document.querySelector('.offcanvas-backdrop');
+    var body = document.querySelector('body');
+  
+    trigger.addEventListener('click', function () {
+      offcanvas.classList.toggle('show');
+      backdrop.classList.toggle('show');
+      body.classList.toggle('offcanvas-open');
+    });
+  
+    backdrop.addEventListener('click', function () {
+      offcanvas.classList.remove('show');
+      backdrop.classList.remove('show');
+      body.classList.remove('offcanvas-open');
+    });
+  </script>
+   
+  

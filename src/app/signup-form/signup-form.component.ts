@@ -21,10 +21,10 @@ export class SignupFormComponent {
  LoginUser(data:any){
   console.warn(data);
   this.userData.saveUser(data).subscribe((result:any)=>{
-    console.log("result",result.success);
+    console.log("result",result);
     if( result.success == true) {
       alert(result.message);
-      this.router.navigate(['/login'])
+      this.router.navigate(['/user'])
     }
     else if( result.success == false){
        alert(result.message);
