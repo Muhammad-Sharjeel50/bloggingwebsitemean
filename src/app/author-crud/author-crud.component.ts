@@ -64,33 +64,34 @@ console.log(headers);
     const modalBackdrop = document.getElementsByClassName('modal-backdrop')[0];
     
 const headers = new HttpHeaders().set('Authorization', `${token}`);
-    id = this.dataId.id;
+    // id = this.dataId.id;
     this.httpClient.delete( `http://localhost:8080/api/v1/blog/deleteblog/${id}`,{headers}).subscribe((response:any)=>{
       console.log(response);
-   if( response.success == "true" ){
+   if( response.success == true ){
     alert(response.message);
+    this.ngOnInit();
+    // modalBackdrop.remove();
+    // deleteModal?.classList.remove('show');
+    modalBackdrop.remove();
+    deleteModal?.classList.remove('show');
+    window.scrollTo(0,0);
     
     }
    
     else{
-      alert(response.message);
-      deleteModal.classList.remove('show');
+      // alert(response.message);
+      
       modalBackdrop.remove();
-      // deleteModal?.classList.remove('show');
+      deleteModal?.classList.remove('show');
       //     deleteModal?.setAttribute('aria-hidden', 'true');
       //     modalBackdrop?.parentNode?.removeChild(modalBackdrop);
-      this.ngOnInit();
+      // this.ngOnInit();
       
       const postElement:any = document.getElementById(`post-${id}`);
    
 if (postElement && postElement.parentNode) {
   postElement.parentNode.removeChild(postElement);
 }
-    
-     
-    
-
-      
     }
    })
    }
@@ -108,9 +109,6 @@ const headers = new HttpHeaders().set('Authorization', `${token}`);
     alert(response.message);
     editModal.classList.remove('show');
       modalBackdrop?.remove();
-
-    // this.activeModal.close();
-    // this.router.navigate(['/author']);
    }
    else{
     // this.toastService.toasts.push(response.message);
@@ -122,7 +120,6 @@ const headers = new HttpHeaders().set('Authorization', `${token}`);
       
     });
   }
-  
   editblog(data:any):any {
     console.log(data);
     this.editList = data

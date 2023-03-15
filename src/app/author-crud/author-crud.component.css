@@ -131,4 +131,9 @@
       transform: none;
   }
   }
-  
+  .modal {
+    overflow-y: auto !important;
+  }
+  .form{
+    overflow-y: auto !important;
+  }

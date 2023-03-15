@@ -53,17 +53,11 @@ console.log(headers);
      }  
      else {
       alert(response.message)
-     }
-     
-      
-    });
-  }
-  }
-  
+     }  
+    }); } } 
   validateDescription() {
     let wordCount = this.description.split(/<.*?>/).join('').split(/\s+/).length;
     console.log(wordCount);
-    
     return wordCount > 10;
   }
   remainingWords() {

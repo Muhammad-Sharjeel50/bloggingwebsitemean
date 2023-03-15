@@ -11,11 +11,13 @@ export class AdminAllblogComponent {
   constructor (private http : HttpClient,  public router: Router){
    this.userList = [];
   }
-  
- 
   ngOnInit(){
    this.getuserList();
-   
+   this.http.get('http://localhost:8080/api/v1/admin/getalluser').subscribe((response:any)=>{
+    console.log(response.data);
+  this.userList = response ? response.data : [];
+  
+ })
   }
   getuserList():any{
    this.http.get('http://localhost:8080/api/v1/admin/getalluser').subscribe((response:any)=>{

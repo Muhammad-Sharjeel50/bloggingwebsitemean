@@ -24,11 +24,13 @@ export class SignupFormComponent {
     console.log("result",result);
     if( result.success == true) {
       alert(result.message);
+   console.log(result.token);
+   localStorage.setItem('token',result.token)
+   localStorage.setItem('role',result.role);
       this.router.navigate(['/user'])
     }
     else if( result.success == false){
        alert(result.message);
 } }) 
   }
-
 }

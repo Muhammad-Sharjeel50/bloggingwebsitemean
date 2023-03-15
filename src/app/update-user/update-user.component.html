@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <h2 class="text-center">Update Profile</h2>
+
+      <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="image">Image:</label>
+          <img src="http://localhost:8080/upload/{{user.image}}" class="card-img-top mb-2" alt="" />
+          <div class="custom-file">
+            <input type="file" id="image" accept="image/*" name="image" class="custom-file-input"
+              (change)="onFileSelected($event)" [disabled]="imageSelected">
+            <label class="custom-file-label" for="image">Choose file</label>
+          </div>
+          <img *ngIf="image" [src]="imageSrc" alt="Selected Image" class="img-fluid mt-2 mb-3">
+        </div>
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" class="form-control" [(ngModel)]="user.name" required>
+          <span *ngIf="!user.name" class="text-danger" data-ng-message="name">
+            Name is Required
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input id="email" name="email" readonly class="form-control" [(ngModel)]="user ? user.Email : user" />
+          <div *ngIf="email && email.valid" data-ng-message="email">
+          </div>
+        </div>
+        <button type="submit" [disabled]="!user.name" class="btn btn-primary btn-block">Update</button>
+      </form>
+
+    </div>
+  </div>
+</div>

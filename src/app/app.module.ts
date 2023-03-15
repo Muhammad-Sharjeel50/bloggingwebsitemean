@@ -28,6 +28,8 @@ import { AdminMenubarComponent } from './admin-menubar/admin-menubar.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { AdminAlluserComponent } from './admin-alluser/admin-alluser.component';
 import { AdminAllblogComponent } from './admin-allblog/admin-allblog.component';
+import { PendingBlogsComponent } from './pending-blogs/pending-blogs.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +56,9 @@ import { AdminAllblogComponent } from './admin-allblog/admin-allblog.component';
     AdminMenubarComponent,
     UpdateUserComponent,
     AdminAlluserComponent,
-    AdminAllblogComponent
+    AdminAllblogComponent,
+    PendingBlogsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

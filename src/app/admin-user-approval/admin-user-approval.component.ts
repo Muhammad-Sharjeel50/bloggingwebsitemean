@@ -1,5 +1,5 @@
 import { HttpClient,HttpHeaders} from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 interface Admin {
   _id: string;
@@ -12,49 +12,39 @@ interface Admin {
   styleUrls: ['./admin-user-approval.component.css']
 })
 export class AdminUserApprovalComponent implements OnInit{
+  @ViewChild('closebutton') closebutton:any;
   userList :any ;
-  constructor (private http : HttpClient,public router : Router){
-  //  this.userList = [];
-  //  this.userList: Admin[] = [];
-  }
+  selectedUserId: any;
+  constructor (private http : HttpClient,public router : Router){}
   ngOnInit(){
    this.getuserList();
   }
   getuserList():any{ 
    this.http.get('http://localhost:8080/api/v1/admin/getrequesteduser').subscribe((response:any)=>{
-     console.log(response.data);
    this.userList = response ? response.data : [];
-   
   })
   }
-  adminApproval(id: any, role: any){
-    const token = localStorage.getItem('token');
-    console.log(token);
-const headers = new HttpHeaders().set('Authorization', `${token}`);
-   console.log(id,role);
+  adminApproval( role: any){
+   let id:any = this.selectedUserId._id;
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `${token}`);
    return this.http.put(  `http://localhost:8080/api/v1/admin/approveuser/${id} `,role,{headers} ).subscribe((response:any)=>{
-     console.log(response.data);
-     response.success ==true ? alert(response.message) :  alert(response.message);
-     for (let i = 0; i < this.userList.length; i++) {
-      if (this.userList[i]._id === id) {
-        this.userList.splice(i, 1);
-        break;
-      }
-    }
-
-    // Close the modal
-    const modal:any = document.getElementById("myModal");
-    // modal.classList.remove("show");
-    // modal.style.display = "none";
+   
+   
+     response.success == true ? alert(response.message) :  alert(response.message);
     const modalBackdrop:any = document.getElementsByClassName("modal-backdrop")[0];
-    // modalBackdrop.classList.remove("show");
+    modalBackdrop.classList.remove("show");
     modalBackdrop.parentNode.removeChild(modalBackdrop);
    this.ngOnInit()
+ 
   })
   };
   Logout(){
     localStorage.removeItem('token');
     return this.router.navigate(['/']);
+  }
+  userApprovalConfirmation(admin:any){
+   this.selectedUserId= admin;
   }
   }
 

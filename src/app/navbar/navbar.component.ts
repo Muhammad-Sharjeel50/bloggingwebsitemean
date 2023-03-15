@@ -8,7 +8,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit{
-  user = { name: '', email: '', password: '' };
+  // user = { name: '', email: '', password: '' };
   image: any;
   modalRef:any;
   userList :any;
@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit{
   title:any;
   description:any;
   // image:any;
+  user:any;
    
  
   // id:any = "64003b2d775065fc26cd9932";
@@ -32,6 +33,17 @@ export class NavbarComponent implements OnInit{
     
    this.getuserList();
    console.log("dataId",this.userList);
+   const token = localStorage.getItem('token');
+   console.log(token);
+const headers = new HttpHeaders().set('Authorization', `${token}`);
+console.log(headers);
+let data  = this.http.get('http://localhost:8080/api/v1/user/getuser',{headers}).subscribe((response:any)=> {
+     
+// this.toastService.toasts.push(response.message);
+console.log(response);
+this.user = response.result;
+} 
+)
   }
   getuserList():any{
 
@@ -50,7 +62,9 @@ export class NavbarComponent implements OnInit{
 
   Logout(){
     localStorage.removeItem('token');
+    // this.ngOnInit();
     return this.router.navigate(['/']);
+    
   }
    getRolePage() {
     const role = localStorage.getItem('role');
@@ -69,6 +83,7 @@ export class NavbarComponent implements OnInit{
       return '';
     }
   }
+  
   // navigationGuard(role:Location):Lo{
   //   if(localStorage.getItem('role')){
   //     return role = this.router.navigate(['/user']);

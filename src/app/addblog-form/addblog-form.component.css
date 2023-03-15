@@ -7,4 +7,17 @@
     border-radius: 5px;
   }
  
-  
+  #image{
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-position-x:center;
+    background-repeat: no-repeat;
+ }
+ .img-fluid{
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-position-x:center;
+    background-repeat: no-repeat;
+ }

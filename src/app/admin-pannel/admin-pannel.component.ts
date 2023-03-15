@@ -13,8 +13,12 @@ import { Router } from '@angular/router';
 
 export class AdminPannelComponent implements OnInit  {
   userList :any ;
+  blogList:any;
+  reason:string = '';
+  selectedBlog: any;
  constructor (private http : HttpClient,private admin : ServicesService , public router: Router){
   this.userList = [];
+  this.blogList = [];
  }
  
 
@@ -29,29 +33,33 @@ export class AdminPannelComponent implements OnInit  {
   
  })
  }
- adminApproval(id: any, status: any){
-  console.log(id,status);
-  return this.http.put(  `http://localhost:8080/api/v1/admin/approveblog/${id} `,status ).subscribe((response:any)=>{
-    console.log(response.data);
-    response.success ==true ? alert(response.message) :  alert(response.message);
-    response.success ==true ? alert(response.message) :  alert(response.message);
+ adminApproval( status: any,reason:any){
+  console.log(status);
+  console.log(this.selectedBlog._id);
+  let id = this.selectedBlog._id;
+   console.log("reason",reason)
+  // id = id.id;
+  return this.http.put(  `http://localhost:8080/api/v1/admin/approveblog/${id} `,{status,reason} ).subscribe((response:any)=>{
+   console.log(response);
+    alert(response.message)
     for (let i = 0; i < this.userList.length; i++) {
      if (this.userList[i]._id === id) {
        this.userList.splice(i, 1);
        break;
      }
-   }
+    }
+  //  }
 
    // Close the modal
-   const modal:any = document.getElementById("myModal");
-   // modal.classList.remove("show");
-   // modal.style.display = "none";
+  //  const modal:any = document.getElementById("myModal");
+  //  modal.classList.remove("show");
+  //  modal.style.display = "none";
    const modalBackdrop:any = document.getElementsByClassName("modal-backdrop")[0];
-   // modalBackdrop.classList.remove("show");
+   modalBackdrop.classList.remove("show");
    modalBackdrop.parentNode.removeChild(modalBackdrop);
   this.ngOnInit()
-  
-  
+  // window.scrollTo(0,0);
+    
  })
  };
  adminDeleteApproval(id: any){
@@ -60,7 +68,7 @@ export class AdminPannelComponent implements OnInit  {
     console.log(response.data);
     response.success ==true ? alert(response.message) :  alert(response.message);
     const modalBackdrop:any = document.getElementsByClassName("modal-backdrop")[0];
-    // modalBackdrop.classList.remove("show");
+    modalBackdrop.classList.remove("show");
     modalBackdrop.parentNode.removeChild(modalBackdrop);
    this.ngOnInit()
  })
@@ -68,5 +76,9 @@ export class AdminPannelComponent implements OnInit  {
  viewBlog(blog:any){
   this.router.navigate([`/blog-details/${blog._id}`], { state: { blog: blog } });
   window.scroll(0,0);
+ }
+deleteBlog(blog:any){
+  console.log("blog",blog.title,blog._id)
+ this.selectedBlog = blog
  }
 }

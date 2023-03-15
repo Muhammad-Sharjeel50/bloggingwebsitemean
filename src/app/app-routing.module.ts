@@ -17,6 +17,8 @@ import { AdminSidenavbarComponent } from './admin-sidenavbar/admin-sidenavbar.co
 import { AdminMenubarComponent } from './admin-menubar/admin-menubar.component';
 import { AdminAlluserComponent } from './admin-alluser/admin-alluser.component';
 import { AdminAllblogComponent } from './admin-allblog/admin-allblog.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { PendingBlogsComponent } from './pending-blogs/pending-blogs.component';
 
 const routes: Routes = [
   {
@@ -69,12 +71,20 @@ const routes: Routes = [
   component :AdminSidenavbarComponent
 },
 {
+path : 'pendingblog',
+component :PendingBlogsComponent
+},
+{
   path : 'allblog',
   component :AdminAlluserComponent
 },
 {
   path : 'alluser',
   component :AdminAllblogComponent
+},
+{
+  path : 'updateuser',
+  component :UpdateUserComponent
 },
 
 ];
