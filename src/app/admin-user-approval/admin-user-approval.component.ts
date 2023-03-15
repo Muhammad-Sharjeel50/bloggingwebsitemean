@@ -29,8 +29,6 @@ export class AdminUserApprovalComponent implements OnInit{
   const token = localStorage.getItem('token');
   const headers = new HttpHeaders().set('Authorization', `${token}`);
    return this.http.put(  `http://localhost:8080/api/v1/admin/approveuser/${id} `,role,{headers} ).subscribe((response:any)=>{
-   
-   
      response.success == true ? alert(response.message) :  alert(response.message);
     const modalBackdrop:any = document.getElementsByClassName("modal-backdrop")[0];
     modalBackdrop.classList.remove("show");
