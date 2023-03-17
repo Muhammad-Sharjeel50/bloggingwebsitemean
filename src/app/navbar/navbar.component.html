@@ -53,14 +53,14 @@
 			</div>
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-			  <button type="button" class="btn btn-primary" onclick="Logout(); closeLogoutModal()">Logout</button>
+			  <button type="button" class="btn btn-primary" onclick="Logout()">Logout</button>
 			</div>
 		  </div>
 		</div>
 	  </div>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
           <a routerLink="/updateuser" class="dropdown-item">Update</a>
-          <a  class="dropdown-item" onclick="openLogoutModal()">Logout</a>
+          <a  class="dropdown-item" (click)="Logout()">Logout</a>
         </div>
       </div>
    

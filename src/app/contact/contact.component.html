@@ -21,7 +21,7 @@
 				</div>
 			</div>
 			<div class="form-contact">
-				<form (ngsubmit)="submit(contactForm.value)" #contactForm="ngForm">
+				<form (ngsubmit)="submit()" #contactForm="ngForm">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="single-input">
@@ -70,7 +70,7 @@
 						</div>
 						<div class="col-12">
 							<div class="submit-input text-center">
-								<input type="submit" [disabled]=" contactForm.invalid" (click)="submit(contactForm.value)" name="submit" value="SUBMIT NOW">
+								<input type="submit" [disabled]=" contactForm.invalid" (click)="submit()" name="submit" value="SUBMIT NOW">
 							</div>
 						</div>
 					</div>

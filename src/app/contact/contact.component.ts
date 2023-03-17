@@ -11,8 +11,8 @@ export class ContactComponent {
   email: any;
   subject: any;
   message:any;
-submit(data : any){
+submit(){
   // return console.log(values);
-  console.log("data"),data;
+  console.log("data");
 }
 }
