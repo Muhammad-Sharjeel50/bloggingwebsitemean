@@ -48,12 +48,6 @@ export class AdminPannelComponent implements OnInit  {
        break;
      }
     }
-  //  }
-
-   // Close the modal
-  //  const modal:any = document.getElementById("myModal");
-  //  modal.classList.remove("show");
-  //  modal.style.display = "none";
    const modalBackdrop:any = document.getElementsByClassName("modal-backdrop")[0];
    modalBackdrop.classList.remove("show");
    modalBackdrop.parentNode.removeChild(modalBackdrop);

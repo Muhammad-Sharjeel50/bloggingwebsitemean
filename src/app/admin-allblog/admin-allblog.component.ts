@@ -50,10 +50,7 @@ export class AdminAllblogComponent {
  
     // Close the modal
     const modal:any = document.getElementById("myModal");
-    // modal.classList.remove("show");
-    // modal.style.display = "none";
     const modalBackdrop:any = document.getElementsByClassName("modal-backdrop")[0];
-    // modalBackdrop.classList.remove("show");
     modalBackdrop.parentNode.removeChild(modalBackdrop);
    this.ngOnInit()
    
@@ -61,7 +58,7 @@ export class AdminAllblogComponent {
   })
   };
   adminDeleteApproval(id: any){
-   //(id);
+  
    return this.http.delete(`http://localhost:8080/api/v1/admin/deleteblog/${id} `).subscribe((response:any)=>{
      //(response.data);
      response.success ==true ? alert(response.message) :  alert(response.message);
