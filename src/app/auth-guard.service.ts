@@ -36,7 +36,10 @@ export class LoginGuard implements CanActivate {
   canActivate(): boolean {
     const user = localStorage.getItem('role');
     if (user) {
-      this.router.navigate(['/']);
+      user === 'Admin' ? this.router.navigate(['/admin']):
+      user === 'Author' ? this.router.navigate(['/author']) :
+      user === 'User' ? this.router.navigate(['/user']):''
+
       return false;
     }
     return true;
