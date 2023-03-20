@@ -20,6 +20,7 @@ import { AdminAllblogComponent } from './admin-allblog/admin-allblog.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { PendingBlogsComponent } from './pending-blogs/pending-blogs.component';
 import { AuthGuardService } from './auth-guard.service';
+import { LoginGuard } from './auth-guard.service';
 const routes: Routes = [
   {
     path : 'user',
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: 'blog-details/:id', component: BlogDescriptionComponent },
   {
     path : 'login',
-    component :LoginFormComponent
+    component :LoginFormComponent,
+    canActivate: [LoginGuard],
   },
   {
     path : '',
@@ -56,7 +58,8 @@ const routes: Routes = [
   },
   {
     path : 'signup',
-    component :SignupFormComponent
+    component :SignupFormComponent,
+    canActivate: [LoginGuard],
   },
   {
     path : 'contactus',
@@ -118,6 +121,13 @@ data: {
   component :UpdateUserComponent,
   data: {
     expectedRole: 'Author' || 'User'
+  }
+},
+{
+  path : 'sidebar',
+  component :AdminSidenavbarComponent,
+  data: {
+    expectedRole: 'Admin',
   }
 },
 

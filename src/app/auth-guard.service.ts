@@ -23,5 +23,23 @@ export class AuthGuardService implements CanActivate {
     this.router.navigate(['/login']);
     return false;
   }
+ 
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LoginGuard implements CanActivate {
+
+  constructor(private router: Router) { }
+
+  canActivate(): boolean {
+    const user = localStorage.getItem('role');
+    if (user) {
+      this.router.navigate(['/']);
+      return false;
+    }
+    return true;
+  }
 }
 
