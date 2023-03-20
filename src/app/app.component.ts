@@ -15,7 +15,7 @@ export class AppComponent {
 
 
 // formSubmit(){
-//   console.log(this.blogForm.value)
+//   //(this.blogForm.value)
 // }
 
 // get(){
@@ -24,6 +24,6 @@ export class AppComponent {
 
 onSubmit(data:any)
 {
-  console.log(data);
+  //(data);
 }
 }

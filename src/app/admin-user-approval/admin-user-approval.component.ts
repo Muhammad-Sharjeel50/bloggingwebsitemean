@@ -14,14 +14,19 @@ interface Admin {
 export class AdminUserApprovalComponent implements OnInit{
   @ViewChild('closebutton') closebutton:any;
   userList :any ;
+  blogList:any;
   selectedUserId: any;
   constructor (private http : HttpClient,public router : Router){}
   ngOnInit(){
    this.getuserList();
-  }
-  getuserList():any{ 
    this.http.get('http://localhost:8080/api/v1/admin/getrequesteduser').subscribe((response:any)=>{
    this.userList = response ? response.data : [];
+   } )
+  }
+  getuserList():any{ 
+   this.http.get('http://localhost:8080/api/v1/admin/getpendingblog').subscribe((response:any)=>{
+   this.blogList = response ? response.data : [];
+   
   })
   }
   adminApproval( role: any){
@@ -39,6 +44,7 @@ export class AdminUserApprovalComponent implements OnInit{
   };
   Logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     return this.router.navigate(['/']);
   }
   userApprovalConfirmation(admin:any){

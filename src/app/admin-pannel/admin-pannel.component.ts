@@ -28,19 +28,19 @@ export class AdminPannelComponent implements OnInit  {
  }
  getuserList():any{
   this.http.get('http://localhost:8080/api/v1/admin/getpendingblog').subscribe((response:any)=>{
-    console.log(response.data);
+    //(response.data);
   this.userList = response ? response.data : [];
   
  })
  }
  adminApproval( status: any,reason:any){
-  console.log(status);
-  console.log(this.selectedBlog._id);
+  //(status);
+  //(this.selectedBlog._id);
   let id = this.selectedBlog._id;
-   console.log("reason",reason)
+   //("reason",reason)
   // id = id.id;
   return this.http.put(  `http://localhost:8080/api/v1/admin/approveblog/${id} `,{status,reason} ).subscribe((response:any)=>{
-   console.log(response);
+   //(response);
     alert(response.message)
     for (let i = 0; i < this.userList.length; i++) {
      if (this.userList[i]._id === id) {
@@ -63,9 +63,9 @@ export class AdminPannelComponent implements OnInit  {
  })
  };
  adminDeleteApproval(id: any){
-  console.log(id);
+  //(id);
   return this.http.delete(`http://localhost:8080/api/v1/admin/deleteblog/${id} `).subscribe((response:any)=>{
-    console.log(response.data);
+    //(response.data);
     response.success ==true ? alert(response.message) :  alert(response.message);
     const modalBackdrop:any = document.getElementsByClassName("modal-backdrop")[0];
     modalBackdrop.classList.remove("show");
@@ -78,7 +78,7 @@ export class AdminPannelComponent implements OnInit  {
   window.scroll(0,0);
  }
 deleteBlog(blog:any){
-  console.log("blog",blog.title,blog._id)
+  //("blog",blog.title,blog._id)
  this.selectedBlog = blog
  }
 }

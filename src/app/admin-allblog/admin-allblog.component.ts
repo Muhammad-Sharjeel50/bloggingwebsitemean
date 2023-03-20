@@ -8,28 +8,37 @@ import { Router } from '@angular/router';
 })
 export class AdminAllblogComponent {
   userList :any ;
+  pendingUserList:any;
+  pendingBlogList:any;
   constructor (private http : HttpClient,  public router: Router){
    this.userList = [];
   }
   ngOnInit(){
    this.getuserList();
    this.http.get('http://localhost:8080/api/v1/admin/getalluser').subscribe((response:any)=>{
-    console.log(response.data);
+    //(response.data);
   this.userList = response ? response.data : [];
-  
  })
+ this.http.get('http://localhost:8080/api/v1/admin/getpendingblog').subscribe((response:any)=>{
+     
+    this.pendingBlogList = response ? response.data : [];
+   } )
+   this.http.get('http://localhost:8080/api/v1/admin/getrequesteduser').subscribe((response:any)=>{
+     
+    this.pendingUserList = response ? response.data : [];
+   } )
   }
   getuserList():any{
    this.http.get('http://localhost:8080/api/v1/admin/getalluser').subscribe((response:any)=>{
-     console.log(response.data);
+     //(response.data);
    this.userList = response ? response.data : [];
    
   })
   }
   adminApproval(id: any, status: any){
-   console.log(id,status);
+   //(id,status);
    return this.http.put(  `http://localhost:8080/api/v1/admin/approveblog/${id} `,status ).subscribe((response:any)=>{
-     console.log(response.data);
+     //(response.data);
      response.success ==true ? alert(response.message) :  alert(response.message);
      response.success ==true ? alert(response.message) :  alert(response.message);
      for (let i = 0; i < this.userList.length; i++) {
@@ -52,14 +61,14 @@ export class AdminAllblogComponent {
   })
   };
   adminDeleteApproval(id: any){
-   console.log(id);
+   //(id);
    return this.http.delete(`http://localhost:8080/api/v1/admin/deleteblog/${id} `).subscribe((response:any)=>{
-     console.log(response.data);
+     //(response.data);
      response.success ==true ? alert(response.message) :  alert(response.message);
      const modalBackdrop:any = document.getElementsByClassName("modal-backdrop")[0];
      // modalBackdrop.classList.remove("show");
      modalBackdrop.parentNode.removeChild(modalBackdrop);
-    this.ngOnInit()
+    this.ngOnInit();
   })
   }; 
   viewBlog(blog:any){
@@ -68,6 +77,7 @@ export class AdminAllblogComponent {
   }
   Logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     return this.router.navigate(['/']);
   }
 }

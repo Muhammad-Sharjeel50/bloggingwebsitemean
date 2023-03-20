@@ -16,14 +16,14 @@
                           <li class="has-submenu">
                             <a data-toggle="collapse" href="#userSubmenu" aria-expanded="false">Users</a>
                             <ul class="collapse list-unstyled" id="userSubmenu">
-                              <li><a routerLink="/approval">Pending Users</a></li>
+                              <li><a routerLink="/approval">Pending Users<span class="ml-4 bg-white pl-1 pr-1 rounded-circle  text-danger">{{pendingUserList ? pendingUserList.length : 0}}</span></a></li>
                               <li><a routerLink="/alluser">All Users</a></li>
                             </ul>
                           </li>
                           <li class="has-submenu">
                             <a data-toggle="collapse" href="#blogSubmenu" aria-expanded="false">Blogs</a>
                             <ul class="collapse list-unstyled" id="blogSubmenu">
-                              <li><a routerLink="/pendingblog">Pending Blogs</a></li>
+                              <li><a routerLink="/pendingblog">Pending Blogs<span class="ml-4 bg-white pl-1 pr-1 rounded-circle  text-danger">{{pendingBlogList ? pendingBlogList.length : 0}}</span></a></li>
                               <li><a routerLink="/allblog">All Blogs</a></li>
                             </ul>
                           </li>
@@ -35,18 +35,14 @@
                           </li>
                         </ul>
                       </nav>
-                
+                      
                     <!-- Page Content  -->
                     <div id="content">
                 
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                             <div class="container-fluid">
                              <h1 class="text-center text-primary">Dashboard</h1>
-                                <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
-                                    <i class="fas fa-align-left"></i>
-                                    <span>Toggle</span>
-                                </button> -->
-                                
+                            
                     </div>
                                 
                         </nav>
@@ -72,8 +68,9 @@
                                     <td>{{blog.status}}</td>
                                     
                                     <td>
-                                      <button type="button" (click)="viewBlog(blog)" class="btn btn-primary" >View</button>
+                                      <button type="button" data-dismiss="modal" data-toggle="modal" (click)="editblog(blog)" data-target="#editModal" class="btn btn-primary" >View</button>
                                     </td>
+                                    
                        </tr>
                        </tbody>
                               </table>
@@ -82,30 +79,31 @@
                 
                 
                
-      <script>
-        $(document).ready(function(){
-        // Activate tooltip
-        $('[data-toggle="tooltip"]').tooltip();
-        
-        // Select/Deselect checkboxes
-        var checkbox = $('table tbody input[type="checkbox"]');
-        $("#selectAll").click(function(){
-            if(this.checked){
-                checkbox.each(function(){
-                    this.checked = true;                        
-                });
-            } else{
-                checkbox.each(function(){
-                    this.checked = false;                        
-                });
-            } 
-        });
-        checkbox.click(function(){
-            if(!this.checked){
-                $("#selectAll").prop("checked", false);
-            }
-        });
-    });
-    
-      </script>
-    
+                <div class="modal fade" id="editModal" tabindex="-1" #myModel role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Edit Card</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form  #UpdateForm="ngForm">
+                          <img src="http://localhost:8080/upload/{{editList.image}}" class="card-img-top mb-2" alt="..."/>
+                        
+                          <div class="form-group">
+                            <h2 for="editTitle">{{editList.title}}</h2>
+                            
+                          </div>
+                          <div class="form-group">
+                            <label for="editDescription">{{editList.description}}</label>
+                            
+                          </div>
+                          
+                        </form>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>

@@ -20,14 +20,14 @@
           <li class="has-submenu">
             <a data-toggle="collapse" href="#userSubmenu" aria-expanded="false">Users</a>
             <ul class="collapse list-unstyled" id="userSubmenu">
-              <li><a routerLink="/approval">Pending Users</a></li>
+              <li><a routerLink="/approval">Pending Users<span class="ml-4 bg-white pl-1 pr-1 rounded-circle  text-danger">{{pendingUserList ? pendingUserList.length : 0}}</span></a></li>
               <li><a routerLink="/alluser">All Users</a></li>
             </ul>
           </li>
           <li class="has-submenu">
             <a data-toggle="collapse" href="#blogSubmenu" aria-expanded="false">Blogs</a>
             <ul class="collapse list-unstyled" id="blogSubmenu">
-              <li><a routerLink="/pendingblog">Pending Blogs</a></li>
+              <li><a routerLink="/pendingblog">Pending Blogs<span class="ml-4 bg-white pl-1 pr-1 rounded-circle  text-danger">{{pendingBlogList ? pendingBlogList.length : 0}}</span></a></li>
               <li><a routerLink="/allblog">All Blogs</a></li>
             </ul>
           </li>

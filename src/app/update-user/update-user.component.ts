@@ -22,13 +22,13 @@ export class UpdateUserComponent implements OnInit{
   
 ngOnInit():any {
   const token = localStorage.getItem('token');
-    console.log(token);
+    //(token);
 const headers = new HttpHeaders().set('Authorization', `${token}`);
-console.log(headers);
+//(headers);
 let data  = this.http.get('http://localhost:8080/api/v1/user/getuser',{headers}).subscribe((response:any)=> {
       
 // this.toastService.toasts.push(response.message);
-console.log(response);
+//(response);
 this.user = response.result;
 } 
 )
@@ -77,7 +77,7 @@ onFileSelected(event: any) {
     else{
     this.http.put('http://localhost:8080/api/v1/blog/updateprofile', formData, { headers })
       .subscribe((response: any) => {
-        console.log(response);
+        //(response);
         this.name = '';
         this.email = '';
         this.image = '';
@@ -102,7 +102,7 @@ onFileSelected(event: any) {
   }
   validateDescription() {
     let wordCount = this.description.split(/<.*?>/).join('').split(/\s+/).length;
-    console.log(wordCount);
+    //(wordCount);
     
     return wordCount > 10;
   }
@@ -112,6 +112,6 @@ onFileSelected(event: any) {
     return Math.max(remainingWords, 0);
   }
   onSubmission(){
-    console.log('Submission')
+    //('Submission')
   }
 }

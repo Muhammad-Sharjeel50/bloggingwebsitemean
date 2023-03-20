@@ -32,9 +32,9 @@ export class AddblogFormComponent {
     }
     else{
     const token = localStorage.getItem('token');
-    console.log(token);
+    //(token);
 const headers = new HttpHeaders().set('Authorization', `${token}`);
-console.log(headers);
+//(headers);
 
     const formData = new FormData();
     formData.append('title', this.title);
@@ -42,7 +42,7 @@ console.log(headers);
     formData.append('image', this.image);
     
     this.http.post('http://localhost:8080/api/v1/blog/postblog', formData ,{headers}).subscribe((response:any)=> {
-      console.log(response);
+      //(response);
       this.title = '';
     this.description = '';
     this.image = '';
@@ -57,7 +57,7 @@ console.log(headers);
     }); } } 
   validateDescription() {
     let wordCount = this.description.split(/<.*?>/).join('').split(/\s+/).length;
-    console.log(wordCount);
+    //(wordCount);
     return wordCount > 10;
   }
   remainingWords() {
@@ -66,6 +66,6 @@ console.log(headers);
     return Math.max(remainingWords, 0);
   }
   onSubmission(){
-    console.log('Submission')
+    //('Submission')
   }
 }

@@ -10,6 +10,7 @@ export class AdminSidenavbarComponent {
   constructor (private router :Router){}
   Logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     return this.router.navigate(['/']);
   }
 }

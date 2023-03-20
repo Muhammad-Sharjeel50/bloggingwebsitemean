@@ -21,10 +21,10 @@ export class SignupFormComponent {
  LoginUser(data:any){
   console.warn(data);
   this.userData.saveUser(data).subscribe((result:any)=>{
-    console.log("result",result);
+    //("result",result);
     if( result.success == true) {
       alert(result.message);
-   console.log(result.token);
+   //(result.token);
    localStorage.setItem('token',result.token)
    localStorage.setItem('role',result.role);
       this.router.navigate(['/user'])

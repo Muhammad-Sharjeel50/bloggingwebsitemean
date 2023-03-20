@@ -23,7 +23,7 @@ export class BlogCardComponent implements OnInit {
 
   getuserList(): any {
     this.httpClient.get('http://localhost:8080/api/v1/blog/getblog').subscribe((response: any) => {
-      console.log(response.data);
+      //(response.data);
       this.userList = response.data;
     });
   }

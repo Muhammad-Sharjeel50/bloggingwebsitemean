@@ -30,7 +30,7 @@ export class AuthorCRUDComponent {
     
     
    this.getuserList();
-   console.log("dataId",this.userList);
+   //("dataId",this.userList);
    
    
    
@@ -39,9 +39,9 @@ export class AuthorCRUDComponent {
   getuserList():any{
 const token = localStorage.getItem('token');
 const headers = new HttpHeaders().set('Authorization', `${token}`);
-console.log(headers);
+//(headers);
    this.httpClient.get( `http://localhost:8080/api/v1/blog/getauthorblog`,{headers}).subscribe((response:any)=>{
-    console.log(response);
+    //(response);
     
    return this.userList = response.data;
    
@@ -59,14 +59,14 @@ console.log(headers);
   }
   deleteForm(id:any):any{
     const token = localStorage.getItem('token');
-    console.log(token);
+    //(token);
     const deleteModal:any= document.getElementById('deleteModal');
     const modalBackdrop = document.getElementsByClassName('modal-backdrop')[0];
     
 const headers = new HttpHeaders().set('Authorization', `${token}`);
     // id = this.dataId.id;
     this.httpClient.delete( `http://localhost:8080/api/v1/blog/deleteblog/${id}`,{headers}).subscribe((response:any)=>{
-      console.log(response);
+      //(response);
    if( response.success == true ){
     alert(response.message);
     this.ngOnInit();
@@ -104,7 +104,7 @@ const headers = new HttpHeaders().set('Authorization', `${token}`);
  this.httpClient.put(  `http://localhost:8080/api/v1/blog/updateblog/${id} `, data ,{headers}).subscribe((response:any)=> {
    if(response.success == 'true'){
     // this.toastService.toasts.push(response.message);
-    console.log(response);
+    //(response);
     
     alert(response.message);
     editModal.classList.remove('show');
@@ -121,7 +121,7 @@ const headers = new HttpHeaders().set('Authorization', `${token}`);
     });
   }
   editblog(data:any):any {
-    console.log(data);
+    //(data);
     this.editList = data
   }
   showStandard() {

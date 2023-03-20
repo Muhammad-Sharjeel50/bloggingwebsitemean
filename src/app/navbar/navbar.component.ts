@@ -32,15 +32,15 @@ export class NavbarComponent implements OnInit{
     
     
    this.getuserList();
-   console.log("dataId",this.userList);
+   //("dataId",this.userList);
    const token = localStorage.getItem('token');
-   console.log(token);
+   //(token);
 const headers = new HttpHeaders().set('Authorization', `${token}`);
-console.log(headers);
+//(headers);
 let data  = this.http.get('http://localhost:8080/api/v1/user/getuser',{headers}).subscribe((response:any)=> {
      
 // this.toastService.toasts.push(response.message);
-console.log(response);
+//(response);
 this.user = response.result;
 } 
 )
@@ -62,9 +62,19 @@ this.user = response.result;
 
   Logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     // this.ngOnInit();
     return this.router.navigate(['/']);
     
+  }
+  checkUser():any{
+    const role = localStorage.getItem('role');
+    if(role !==null){
+     return this.router.navigate(['/updateuser']);
+    }
+    else{
+      return alert('You need to login to update');
+    }
   }
    getRolePage() {
     const role = localStorage.getItem('role');
@@ -84,38 +94,9 @@ this.user = response.result;
     }
   }
   
-  // navigationGuard(role:Location):Lo{
-  //   if(localStorage.getItem('role')){
-  //     return role = this.router.navigate(['/user']);
-
-  //   }
 
   onSubmit(id:any,data:any):any {
-  //   const editModal:any= document.getElementById('editModal');
-  //   const modalBackdrop = document.querySelector('.modal-backdrop');
-   
-  // this.http.put(  `http://localhost:8080/api/v1/blog/updateprofile/${id} `, data ).subscribe((response:any)=> {
-  //   if(response.success == 'true'){
-  //    // this.toastService.toasts.push(response.message);
-  //    console.log(response);
-     
-  //    alert(response.message);
-  //    editModal.classList.remove('show');
-  //      modalBackdrop?.remove();
- 
-  //    // this.activeModal.close();
-  //    // this.router.navigate(['/author']);
-  //   }
-  //   else{
-  //    // this.toastService.toasts.push(response.message);
-  //    alert(response.message);
-  //    editModal.classList.remove('show');
-  //      modalBackdrop?.remove();
-    
-  //   }
-       
-  //    });
-  //  }
+  
   }
 }
   

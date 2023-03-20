@@ -12,13 +12,13 @@ export class UserPageComponent {
   adminApprovalForAuthor(request:any){
   
     const token = localStorage.getItem('token');
-    console.log(token);
+    //(token);
 const headers = new HttpHeaders().set('Authorization', `${token}`);
-console.log(headers);
+//(headers);
 
    
     this.http.put('http://localhost:8080/api/v1/admin/approverequesteduser',{token,request},).subscribe((response:any)=> {
-      console.log(response)
+      //(response)
     return  response.success == true ? alert(response.message) :  alert(response.message);
       
     });

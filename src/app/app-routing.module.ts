@@ -19,11 +19,15 @@ import { AdminAlluserComponent } from './admin-alluser/admin-alluser.component';
 import { AdminAllblogComponent } from './admin-allblog/admin-allblog.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { PendingBlogsComponent } from './pending-blogs/pending-blogs.component';
-
+import { AuthGuardService } from './auth-guard.service';
 const routes: Routes = [
   {
     path : 'user',
-    component :UserPageComponent
+    component :UserPageComponent,
+    canActivate:[AuthGuardService],
+    data: {
+      expectedRole: 'User'
+    }
   },
   
   { path: 'card', component: BlogCardComponent },
@@ -34,15 +38,21 @@ const routes: Routes = [
   },
   {
     path : '',
-    component :HomePageComponent
+    component :HomePageComponent,
+    
   },
   {
     path : 'about',
-    component :AboutComponent
+    component :AboutComponent,
+   
   },
   {
     path : 'approval',
-    component :AdminUserApprovalComponent
+    component :AdminUserApprovalComponent,
+    canActivate: [AuthGuardService],
+    data: {
+      expectedRole: 'Admin'
+    }
   },
   {
     path : 'signup',
@@ -50,41 +60,65 @@ const routes: Routes = [
   },
   {
     path : 'contactus',
-    component :ContactComponent
+    component :ContactComponent,
+    
   },
   {
     path : 'form',
-    component :AddblogFormComponent
+    component :AddblogFormComponent,
+    canActivate: [AuthGuardService],
+    data: {
+      expectedRole: 'Author'
+    }
   },
   
   
   {
     path : 'author',
-    component :AuthorCRUDComponent
+    component :AuthorCRUDComponent,
+    canActivate: [AuthGuardService],
+    data: {
+      expectedRole: 'Author'
+    }
   },
   {
   path : 'admin',
-  component :AdminMenubarComponent
-},
-{
-  path : 'sidebar',
-  component :AdminSidenavbarComponent
+  component :AdminMenubarComponent,
+  canActivate: [AuthGuardService],
+    data: {
+      expectedRole: 'Admin'
+    }
 },
 {
 path : 'pendingblog',
-component :PendingBlogsComponent
+component :PendingBlogsComponent,
+canActivate: [AuthGuardService],
+data: {
+  expectedRole: 'Admin'
+}
 },
 {
   path : 'allblog',
-  component :AdminAlluserComponent
+  component :AdminAlluserComponent,
+  canActivate: [AuthGuardService],
+  data: {
+    expectedRole: 'Admin'
+  }
 },
 {
   path : 'alluser',
-  component :AdminAllblogComponent
+  component :AdminAllblogComponent,
+  canActivate: [AuthGuardService],
+  data: {
+    expectedRole: 'Admin'
+  }
 },
 {
   path : 'updateuser',
-  component :UpdateUserComponent
+  component :UpdateUserComponent,
+  data: {
+    expectedRole: 'Author' || 'User'
+  }
 },
 
 ];
