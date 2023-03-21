@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-admin-menubar',
   templateUrl: './admin-menubar.component.html',
@@ -11,7 +12,7 @@ export class AdminMenubarComponent implements OnInit{
   blogList:any;
   pendingBlogList:any;
   pendingUserList:any;
-  constructor (private router:Router,private http : HttpClient){
+  constructor (private router:Router,private http : HttpClient,private toastr  :ToastrService){
   this.userList = [];
   this.blogList = [];
   }
@@ -36,6 +37,7 @@ export class AdminMenubarComponent implements OnInit{
    } )
   }
   Logout(){
+    this.toastr.info("Logout Successfully");
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     return this.router.navigate(['/']);

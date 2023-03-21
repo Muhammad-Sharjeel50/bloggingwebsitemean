@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -23,7 +24,7 @@ export class NavbarComponent implements OnInit{
   dataId:any = localStorage.getItem('token');
   id:any ;
   imageSrc: any;
-  constructor(private router: Router,private http: HttpClient, public modalService: NgbModal){
+  constructor(private router: Router,private http: HttpClient, public modalService: NgbModal,private toastr:ToastrService){
   this.userList = [];
   //  this.editList = [];
    
@@ -61,9 +62,11 @@ this.user = response.result;
   }
 
   Logout(){
+    this.toastr.info('Logout Successfully')
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     // this.ngOnInit();
+    
     return this.router.navigate(['/']);
     
   }
@@ -73,7 +76,7 @@ this.user = response.result;
      return this.router.navigate(['/updateuser']);
     }
     else{
-      return alert('You need to login to update');
+      return this.toastr.warning('You need to login to update');
     }
   }
    getRolePage() {

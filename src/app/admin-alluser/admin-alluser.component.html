@@ -1,6 +1,6 @@
  
                
-         
+                
                 <div class="wrapper">
                     <!-- Sidebar  -->
                     <nav id="sidebar">
@@ -49,9 +49,9 @@
                         <div class="container" >
                             <div class="table-wrapper">
                               
-                              <table class="table table-striped table-hover" >
+                              <table class="table table-striped table-hover">
                                 <thead>
-                                  <tr >
+                                  <tr>
                                     <th>Sr</th>
                                     <th>Title</th>
                                     <th>AuthorId</th>
@@ -59,16 +59,18 @@
                                     <th>View</th>
                                   </tr>
                                 </thead>
-                                <tbody >
+                                <tbody>
                                   <tr *ngFor="let blog of userList; let i=index ">
-                                   
                                     <td>{{i+1}}</td>
                                     <td>{{blog.title}}</td>
                                     <td>{{blog.AuthorId}}</td>
                                     <td>{{blog.status}}</td>
-                                    
                                     <td>
-                                      <button type="button" data-dismiss="modal" data-toggle="modal" (click)="editblog(blog)" data-target="#editModal" class="btn btn-primary" >View</button>
+                                      <button type="button" data-dismiss="modal" data-toggle="modal" (click)="editblog(blog)" data-target="#editModal" class="btn btn-primary">View</button>
+                                    </td>
+                                  </tr>
+                                  <tr *ngIf="editList">
+                                    <td colspan="5">
                                       <div class="modal fade" id="editModal" tabindex="-1" #myModel role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                           <div class="modal-content">
@@ -79,28 +81,22 @@
                                               </button>
                                             </div>
                                             <div class="modal-body">
-                                              <form  #UpdateForm="ngForm">
+                                              <form #UpdateForm="ngForm">
                                                 <img src="http://localhost:8080/upload/{{editList.image}}" class="card-img-top mb-2" alt="..."/>
-                                              
                                                 <div class="form-group">
                                                   <h2 for="editTitle">{{editList.title}}</h2>
-                                                  
                                                 </div>
                                                 <div class="form-group">
                                                   <label for="editDescription">{{editList.description}}</label>
-                                                  
                                                 </div>
-                                                
                                               </form>
                                             </div>
-                                            
                                           </div>
                                         </div>
                                       </div>
                                     </td>
-                                    
-                       </tr>
-                       </tbody>
+                                  </tr>
+                                </tbody>
                               </table>
                     </div>
                 </div>

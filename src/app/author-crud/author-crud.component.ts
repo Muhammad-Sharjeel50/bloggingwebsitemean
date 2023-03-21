@@ -1,7 +1,8 @@
 import { Component,OnInit,ViewChild,ElementRef } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { ToastService } from '../_services/toast.service';
+// import { ToastService } from '../_services/toast.service';
+import { ToastrService } from 'ngx-toastr';
 // import { Modal } from 'bootstrap/js/dist/modal';
 import { BootstrapOptions } from '@angular/core';
 @Component({
@@ -21,7 +22,7 @@ export class AuthorCRUDComponent {
   dataId:any = localStorage.getItem('token');
   id:any ;
   imageSrc: any;
-  constructor (private httpClient : HttpClient,public toastService: ToastService,public router  :Router,){
+  constructor (private httpClient : HttpClient,public toastr: ToastrService,public router  :Router,){
    this.userList = [];
   //  this.editList = [];
    
@@ -68,7 +69,7 @@ const headers = new HttpHeaders().set('Authorization', `${token}`);
     this.httpClient.delete( `http://localhost:8080/api/v1/blog/deleteblog/${id}`,{headers}).subscribe((response:any)=>{
       //(response);
    if( response.success == true ){
-    alert(response.message);
+    this.toastr.success(response.message);
     this.ngOnInit();
     // modalBackdrop.remove();
     // deleteModal?.classList.remove('show');
@@ -79,13 +80,8 @@ const headers = new HttpHeaders().set('Authorization', `${token}`);
     }
    
     else{
-      // alert(response.message);
-      
-      modalBackdrop.remove();
-      deleteModal?.classList.remove('show');
-      //     deleteModal?.setAttribute('aria-hidden', 'true');
-      //     modalBackdrop?.parentNode?.removeChild(modalBackdrop);
-      // this.ngOnInit();
+      this.toastr.error(response.message);
+     
       
       const postElement:any = document.getElementById(`post-${id}`);
    
@@ -106,13 +102,13 @@ const headers = new HttpHeaders().set('Authorization', `${token}`);
     // this.toastService.toasts.push(response.message);
     //(response);
     
-    alert(response.message);
+    this.toastr.success(response.message);
     editModal.classList.remove('show');
       modalBackdrop?.remove();
    }
    else{
     // this.toastService.toasts.push(response.message);
-    alert(response.message);
+    this.toastr.success(response.message);
     editModal.classList.remove('show');
       modalBackdrop?.remove();
    
@@ -124,38 +120,6 @@ const headers = new HttpHeaders().set('Authorization', `${token}`);
     //(data);
     this.editList = data
   }
-  showStandard() {
-    this.toastService.show('I am a standard toast', {
-      delay: 2000,
-      autohide: true
-    });
-  }
+  
 
-  showSuccess() {
-    this.toastService.show('I am a success toast', {
-      classname: 'bg-success text-light',
-      delay: 2000 ,
-      autohide: true,
-      headertext: 'Toast Header'
-    });
-  }
-  showError() {
-    this.toastService.show('I am a success toast', {
-      classname: 'bg-danger text-light',
-      delay: 2000 ,
-      autohide: true,
-      headertext: 'Error!!!'
-    });
-  }
-
-  showCustomToast(customTpl:any) {
-    this.toastService.show(customTpl, {
-      classname: 'bg-info text-light',
-      delay: 3000,
-      autohide: true
-    });
-  }
-  showProfile(){
- 
   } 
-}

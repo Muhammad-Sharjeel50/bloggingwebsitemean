@@ -3,6 +3,7 @@
     background-color: #f5e0e5 !important;
     font-family:sans-serif;
   } */
+  @import "../node_modules/ngx-toastr/toastr.css";
   body {
     overflow-y: auto !important;
   }

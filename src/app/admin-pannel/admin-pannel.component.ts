@@ -3,6 +3,7 @@ import { Component,OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ServicesService } from '../services.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 // import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 
 @Component({
@@ -16,7 +17,7 @@ export class AdminPannelComponent implements OnInit  {
   blogList:any;
   reason:string = '';
   selectedBlog: any;
- constructor (private http : HttpClient,private admin : ServicesService , public router: Router){
+ constructor (private http : HttpClient,private admin : ServicesService , public router: Router,private toastr:ToastrService){
   this.userList = [];
   this.blogList = [];
  }
@@ -41,7 +42,8 @@ export class AdminPannelComponent implements OnInit  {
   // id = id.id;
   return this.http.put(  `http://localhost:8080/api/v1/admin/approveblog/${id} `,{status,reason} ).subscribe((response:any)=>{
    //(response);
-    alert(response.message)
+   if(response.success === true){
+    this.toastr.success(response.message)
     for (let i = 0; i < this.userList.length; i++) {
      if (this.userList[i]._id === id) {
        this.userList.splice(i, 1);
@@ -53,14 +55,17 @@ export class AdminPannelComponent implements OnInit  {
    modalBackdrop.parentNode.removeChild(modalBackdrop);
   this.ngOnInit()
   // window.scrollTo(0,0);
-    
+   }
+   else{
+    this.toastr.error(response.message)
+   }  
  })
  };
  adminDeleteApproval(id: any){
   //(id);
   return this.http.delete(`http://localhost:8080/api/v1/admin/deleteblog/${id} `).subscribe((response:any)=>{
     //(response.data);
-    response.success ==true ? alert(response.message) :  alert(response.message);
+    response.success ==true ? this.toastr.success(response.message) :  this.toastr.error(response.message);
     const modalBackdrop:any = document.getElementsByClassName("modal-backdrop")[0];
     modalBackdrop.classList.remove("show");
     modalBackdrop.parentNode.removeChild(modalBackdrop);

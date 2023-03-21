@@ -23,14 +23,14 @@ export class SignupFormComponent {
   this.userData.saveUser(data).subscribe((result:any)=>{
     console.log("result",result);
     if( result.success == true) {
-      alert(result.message);
+      this.toastr.success(result.message);
    console.log(result.token);
    localStorage.setItem('token',result.token)
    localStorage.setItem('role',result.role);
       this.router.navigate(['/user'])
     }
     else if( result.success == false){
-       alert(result.message);
+       this.toastr.error(result.message);
 } }) 
   }
 }

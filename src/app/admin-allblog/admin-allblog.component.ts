@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-admin-allblog',
   templateUrl: './admin-allblog.component.html',
@@ -10,7 +11,7 @@ export class AdminAllblogComponent {
   userList :any ;
   pendingUserList:any;
   pendingBlogList:any;
-  constructor (private http : HttpClient,  public router: Router){
+  constructor (private http : HttpClient,  public router: Router,public toastr:ToastrService){
    this.userList = [];
   }
   ngOnInit(){
@@ -39,8 +40,8 @@ export class AdminAllblogComponent {
    //(id,status);
    return this.http.put(  `http://localhost:8080/api/v1/admin/approveblog/${id} `,status ).subscribe((response:any)=>{
      //(response.data);
-     response.success ==true ? alert(response.message) :  alert(response.message);
-     response.success ==true ? alert(response.message) :  alert(response.message);
+     response.success ==true ? this.toastr.success(response.message) :  this.toastr.error(response.message);
+    //  response.success ==true ? this.toastr.success(response.message) :  this.toastr.success(response.message);
      for (let i = 0; i < this.userList.length; i++) {
       if (this.userList[i]._id === id) {
         this.userList.splice(i, 1);
@@ -61,7 +62,7 @@ export class AdminAllblogComponent {
   
    return this.http.delete(`http://localhost:8080/api/v1/admin/deleteblog/${id} `).subscribe((response:any)=>{
      //(response.data);
-     response.success ==true ? alert(response.message) :  alert(response.message);
+     response.success ==true ? this.toastr.success(response.message) :  this.toastr.success(response.message);
      const modalBackdrop:any = document.getElementsByClassName("modal-backdrop")[0];
      // modalBackdrop.classList.remove("show");
      modalBackdrop.parentNode.removeChild(modalBackdrop);
@@ -74,6 +75,7 @@ export class AdminAllblogComponent {
   }
   Logout(){
     localStorage.removeItem('token');
+    
     localStorage.removeItem('role');
     return this.router.navigate(['/']);
   }

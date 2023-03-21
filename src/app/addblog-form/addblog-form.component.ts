@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-addblog-form',
   templateUrl: './addblog-form.component.html',
@@ -14,7 +14,7 @@ export class AddblogFormComponent {
   imageSrc: any;
   description: any;
   
-  constructor(private http: HttpClient,public router : Router) {}
+  constructor(private http: HttpClient,public router : Router,private toastr : ToastrService ) {}
 
   onFileSelected(event: any) {
     this.image = event.target.files[0];
@@ -28,7 +28,7 @@ export class AddblogFormComponent {
   }
   onSubmit():any {
     if(!this.image ){
-      alert('Please select an image');
+      this.toastr.warning('Please select an image');
     }
     else{
     const token = localStorage.getItem('token');
@@ -48,11 +48,11 @@ const headers = new HttpHeaders().set('Authorization', `${token}`);
     this.image = '';
      if(response.success == true) {
     
-      alert(response.message)
+     this.toastr.success(response.message)
       this.router.navigate(['/author']);
      }  
      else {
-      alert(response.message)
+     this.toastr.error(response.message)
      }  
     }); } } 
   validateDescription() {

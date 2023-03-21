@@ -11,7 +11,7 @@ export class AdminPannelService {
   //   // //();
   //   return this.http.get(  'http://localhost:8080/api/v1/admin/getpendingblog' ).subscribe((response:any)=>{
   //     //(response.data);
-  //     response.success ==true ? alert(response.message) :  alert(response.message);  
+  //     response.success ==true ? this.toastr.success(response.message) :  this.toastr.success(response.message);  
   //  })
   //  }; 
 }

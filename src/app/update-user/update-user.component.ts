@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-update-user',
   templateUrl: './update-user.component.html',
@@ -16,7 +17,7 @@ export class UpdateUserComponent implements OnInit{
   title:any;
   imageSelected: boolean = false;
 
-  constructor(private http: HttpClient,public router : Router) {
+  constructor(private http: HttpClient,public router : Router,private toastr : ToastrService) {
     this.user = [];
   }
   
@@ -72,7 +73,7 @@ onFileSelected(event: any) {
       formData.append('image', this.user ?  this.user.image : this.user.image);
     }
     if(!this.image){
-      alert('Please Select Image')
+      this.toastr.warning('Please Select Image')
     }
     else{
     this.http.put('http://localhost:8080/api/v1/blog/updateprofile', formData, { headers })
@@ -83,7 +84,7 @@ onFileSelected(event: any) {
         this.image = '';
         if (response.success == true) {
           let role = localStorage.getItem('role');
-          alert(response.message);
+          this.toastr.success(response.message);
           if(role =='User') {
           this.router.navigate(['/user']);
         } 
@@ -95,7 +96,7 @@ onFileSelected(event: any) {
         }
       }
         else {
-          alert(response.message);
+          this.toastr.error(response.message);
         }
       });
     }

@@ -69,7 +69,7 @@ import { FooterComponent } from './footer/footer.component';
     NgbModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({
-      timeOut:2000,
+      timeOut:4000,
       progressBar:true,
     }), // ToastrModule added
   ],
