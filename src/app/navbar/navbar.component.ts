@@ -63,9 +63,8 @@ this.user = response.result;
 
   Logout(){
     this.toastr.info('Logout Successfully')
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    // this.ngOnInit();
+    localStorage.clear();
+    
     
     return this.router.navigate(['/']);
     

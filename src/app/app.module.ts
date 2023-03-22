@@ -30,6 +30,7 @@ import { AdminAlluserComponent } from './admin-alluser/admin-alluser.component';
 import { AdminAllblogComponent } from './admin-allblog/admin-allblog.component';
 import { PendingBlogsComponent } from './pending-blogs/pending-blogs.component';
 import { FooterComponent } from './footer/footer.component';
+import {NgxPaginationModule} from 'ngx-pagination'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { FooterComponent } from './footer/footer.component';
     SignupFormComponent,
     LoginFormComponent,
     BlogCardComponent,
+   
     // BlogFormComponent,
     // AdminPnnelComponent,
     AdminPannelComponent,
@@ -67,6 +69,7 @@ import { FooterComponent } from './footer/footer.component';
     HttpClientModule,
     FormsModule,
     NgbModule,
+    NgxPaginationModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot({
       timeOut:4000,

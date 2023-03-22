@@ -60,7 +60,7 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr *ngFor="let blog of userList; let i=index ">
+                                  <tr *ngFor="let blog of pagedUserList | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: userList && userList.length } as pagedUserList; let i=index;">
                                     <td>{{i+1}}</td>
                                     <td>{{blog.title}}</td>
                                     <td>{{blog.AuthorId}}</td>
@@ -98,6 +98,7 @@
                                   </tr>
                                 </tbody>
                               </table>
+                              <pagination-controls class="Bottom-Sticky" (pageChange)="currentPage = $event"></pagination-controls>
                     </div>
                 </div>
                 

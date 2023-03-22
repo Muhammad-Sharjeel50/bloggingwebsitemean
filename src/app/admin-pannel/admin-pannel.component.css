@@ -233,3 +233,8 @@ th{
   .modal-open {
     overflow: auto !important;
   }
+  .Bottom-Sticky{
+    position: bottom !important;
+    bottom:0;
+
+  }

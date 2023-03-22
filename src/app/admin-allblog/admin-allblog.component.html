@@ -58,10 +58,10 @@
                                   
                                   </tr>
                                 </thead>
-                                <tbody >
-                                  <tr  *ngFor="let blog of userList; let i=index ">
+                                <tbody *ngFor="let blog of pagedUserList | paginate: { itemsPerPage: 10, currentPage: currentPage, totalItems: userList && userList.length } as pagedUserList; let i=index;">
+                                  <tr >
                                    
-                                    <td>{{i+1}}</td>
+                                    <td>{{(currentPage - 1) * 10 + i + 1}}</td>
                                     <td>{{blog.Email}}</td>
                                     <td>{{blog._id}}</td>
                                     <td>{{blog.role}}</td>
@@ -69,32 +69,7 @@
                        </tr>
                        </tbody>
                               </table>
+                              <pagination-controls class="Bottom-Sticky " (pageChange)="currentPage = $event"></pagination-controls>
                     </div>
                 </div>         
-      <script>
-        $(document).ready(function(){
-        // Activate tooltip
-        $('[data-toggle="tooltip"]').tooltip();
-        
-        // Select/Deselect checkboxes
-        var checkbox = $('table tbody input[type="checkbox"]');
-        $("#selectAll").click(function(){
-            if(this.checked){
-                checkbox.each(function(){
-                    this.checked = true;                        
-                });
-            } else{
-                checkbox.each(function(){
-                    this.checked = false;                        
-                });
-            } 
-        });
-        checkbox.click(function(){
-            if(!this.checked){
-                $("#selectAll").prop("checked", false);
-            }
-        });
-    });
-    
-      </script>
     

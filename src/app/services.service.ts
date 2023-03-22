@@ -6,23 +6,38 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ServicesService {
-  url = 'http://localhost:8080/api/v1/user/registeruser';
-  urls ='http://localhost:8080/api/v1/user/loginuser';
-  adminApprovedUrl='http://localhost:8080/api/v1/admin/approveblog/:id';
-  
+  API_URL = 'http://localhost:8080/api/v1';
   constructor(private http : HttpClient) { }
-  user(){
-    return this.http.get(this.url);
+  //For SignupForm
+  registerUser(data:any){
+    return this.http.post(this.API_URL + '/user/registeruser',data)
   }
-  saveUser(data:any){
-    return this.http.post(this.url,data)
+  //for LoginForm
+  loginUser(data:any){
+    return this.http.post(this.API_URL + '/user/loginuser',data)
   }
-  userLogin(){
-    return this.http.get(this.urls);
+  //For Admin User Approval Post
+  AdminApprovalForUser(data:any){
+    return this.http.put(this.API_URL + '/admin/approvaluser',data)
   }
-  saveUserLogin(data:any){
-    return this.http.post(this.urls,data)
-
+  //For getting Pending Blogs of User for Admin Approval Post
+  AdminApprovalForBlog(id:any,status:any,reason:any){
+    return this.http.put(this.API_URL + '/admin/approveblog'+id,{status,reason})
   }
-  
+  AdminApprovalFordeleteBlog(id:any){
+    return this.http.put(this.API_URL +   `/admin/deleteblog/${id}`,'')
+  }
+  //get pending Blog For Admin
+  getPendingBlogForAdmin(){
+    return this.http.get(this.API_URL + '/admin/getpendingblog')
+  }
+  getPendingUserForAdmin(){
+    return this.http.get(this.API_URL + '/admin/getrequesteduser')
+  }
+  getAllUserForAdmin(){
+    return this.http.get(this.API_URL + '/admin/getalluser')
+  }
+  getAllBlogForAdmin(){
+    return this.http.get(this.API_URL + '/admin/getallblog')
+  }
 }

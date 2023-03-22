@@ -17,14 +17,12 @@ export class SignupFormComponent {
   }
   users: any;
   
- constructor (private userData : ServicesService,private toastr : ToastrService,private router: Router){}
+ constructor (private apiService : ServicesService,private toastr : ToastrService,private router: Router){}
  LoginUser(data:any){
   console.warn(data);
-  this.userData.saveUser(data).subscribe((result:any)=>{
-    console.log("result",result);
+  this.apiService.registerUser(data).subscribe((result:any)=>{
     if( result.success == true) {
       this.toastr.success(result.message);
-   console.log(result.token);
    localStorage.setItem('token',result.token)
    localStorage.setItem('role',result.role);
       this.router.navigate(['/user'])

@@ -24,8 +24,7 @@ export class PendingBlogsComponent implements OnInit {
   }
   Logout(){
     this.toastr.info("Logout Successfully")
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
+    localStorage.clear();
     return this.router.navigate(['/']);
   }
 }

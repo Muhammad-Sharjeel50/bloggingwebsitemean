@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ServicesService } from '../services.service';
 @Component({
   selector: 'app-admin-allblog',
   templateUrl: './admin-allblog.component.html',
@@ -11,26 +12,35 @@ export class AdminAllblogComponent {
   userList :any ;
   pendingUserList:any;
   pendingBlogList:any;
-  constructor (private http : HttpClient,  public router: Router,public toastr:ToastrService){
+  currentPage:number =1;
+pageSize: number = 10;
+  paginatedUserList: any[] = [];
+
+  constructor (private http : HttpClient,  public router: Router,public toastr:ToastrService ,private apiService:ServicesService){
    this.userList = [];
   }
   ngOnInit(){
    this.getuserList();
-   this.http.get('http://localhost:8080/api/v1/admin/getalluser').subscribe((response:any)=>{
+   this.apiService.getAllUserForAdmin().subscribe((response:any)=>{
     //(response.data);
   this.userList = response ? response.data : [];
  })
- this.http.get('http://localhost:8080/api/v1/admin/getpendingblog').subscribe((response:any)=>{
+ this.apiService.getPendingBlogForAdmin().subscribe((response:any)=>{
      
     this.pendingBlogList = response ? response.data : [];
    } )
-   this.http.get('http://localhost:8080/api/v1/admin/getrequesteduser').subscribe((response:any)=>{
+   this.apiService.getPendingUserForAdmin().subscribe((response:any)=>{
      
     this.pendingUserList = response ? response.data : [];
    } )
   }
+  get pagedUserList() {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    return this.userList && this.userList.slice(startIndex, endIndex);
+  }
   getuserList():any{
-   this.http.get('http://localhost:8080/api/v1/admin/getalluser').subscribe((response:any)=>{
+   this.apiService.getAllUserForAdmin().subscribe((response:any)=>{
      //(response.data);
    this.userList = response ? response.data : [];
    
@@ -38,7 +48,7 @@ export class AdminAllblogComponent {
   }
   adminApproval(id: any, status: any){
    //(id,status);
-   return this.http.put(  `http://localhost:8080/api/v1/admin/approveblog/${id} `,status ).subscribe((response:any)=>{
+   return this.apiService.AdminApprovalForBlog(id,status,'').subscribe((response:any)=>{
      //(response.data);
      response.success ==true ? this.toastr.success(response.message) :  this.toastr.error(response.message);
     //  response.success ==true ? this.toastr.success(response.message) :  this.toastr.success(response.message);
@@ -48,7 +58,6 @@ export class AdminAllblogComponent {
         break;
       }
     }
- 
     // Close the modal
     const modal:any = document.getElementById("myModal");
     const modalBackdrop:any = document.getElementsByClassName("modal-backdrop")[0];
@@ -60,7 +69,7 @@ export class AdminAllblogComponent {
   };
   adminDeleteApproval(id: any){
   
-   return this.http.delete(`http://localhost:8080/api/v1/admin/deleteblog/${id} `).subscribe((response:any)=>{
+   return this.apiService.AdminApprovalFordeleteBlog(id).subscribe((response:any)=>{
      //(response.data);
      response.success ==true ? this.toastr.success(response.message) :  this.toastr.success(response.message);
      const modalBackdrop:any = document.getElementsByClassName("modal-backdrop")[0];
@@ -74,9 +83,7 @@ export class AdminAllblogComponent {
    window.scroll(0,0);
   }
   Logout(){
-    localStorage.removeItem('token');
-    
-    localStorage.removeItem('role');
+   localStorage.clear();
     return this.router.navigate(['/']);
   }
 }

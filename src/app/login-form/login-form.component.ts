@@ -12,20 +12,18 @@ import { ToastrService } from 'ngx-toastr';
 
 export class LoginFormComponent implements OnInit{
     users  :any;
-    constructor (private userData : ServicesService,private router: Router, private toster: ToastrService){ }
+    constructor (private apiService : ServicesService,private router: Router, private toster: ToastrService){ }
        ngOnInit(){
         // this.toster.('Message Success!', 'Title Success!');
        }
        LoginUser(data:any){
        
-        this.userData.saveUserLogin(data).subscribe((result:any)=>{
+        this.apiService.loginUser(data).subscribe((result:any)=>{
         
           if( result.success == true) {
-          
                   localStorage.setItem('token',result.token);
-                  localStorage.setItem('role',result.role);
-                 
-                 this.toster.success(result.message);
+                  localStorage.setItem('role',result.role);  
+                   this.toster.success(result.message);
                 if(result.role =='User') { this.router.navigate(['/user'])}
                 else if(result.role =='Admin') { this.router.navigate(['/admin'])}
                 else if(result.role =='Author') { this.router.navigate(['/author'])}

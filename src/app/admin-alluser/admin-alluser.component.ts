@@ -12,6 +12,9 @@ export class AdminAlluserComponent {
   pendingBlogList:any;
   pendingUserList:any;
   editList:any;
+  currentPage:number =1;
+  pageSize: number = 10;
+    paginatedUserList: any[] = [];
   constructor (private http : HttpClient,  public router: Router,public toastr:ToastrService){
    this.userList = [];
   }
@@ -29,7 +32,11 @@ export class AdminAlluserComponent {
    } )
    
   }
-  
+  get pagedUserList() {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    return this.userList && this.userList.slice(startIndex, endIndex);
+  }
   getuserList():any{
    this.http.get('http://localhost:8080/api/v1/admin/getallblog').subscribe((response:any)=>{
      //(response.data);
@@ -77,8 +84,7 @@ export class AdminAlluserComponent {
    window.scroll(0,0);
   }
   Logout(){
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
+    localStorage.clear();
     this.toastr.info('Logout Successfully')
     return this.router.navigate(['/']);
   }

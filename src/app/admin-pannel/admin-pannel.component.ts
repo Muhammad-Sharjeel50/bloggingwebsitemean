@@ -17,7 +17,10 @@ export class AdminPannelComponent implements OnInit  {
   blogList:any;
   reason:string = '';
   selectedBlog: any;
- constructor (private http : HttpClient,private admin : ServicesService , public router: Router,private toastr:ToastrService){
+  currentPage:number =1;
+pageSize: number = 10;
+  paginatedUserList: any[] = [];
+ constructor (private http : HttpClient,private apiService : ServicesService , public router: Router,private toastr:ToastrService){
   this.userList = [];
   this.blogList = [];
  }
@@ -28,12 +31,17 @@ export class AdminPannelComponent implements OnInit  {
   
  }
  getuserList():any{
-  this.http.get('http://localhost:8080/api/v1/admin/getpendingblog').subscribe((response:any)=>{
+  this.apiService.getPendingBlogForAdmin().subscribe((response:any)=>{
     //(response.data);
   this.userList = response ? response.data : [];
   
  })
  }
+ get pagedUserList() {
+  const startIndex = (this.currentPage - 1) * this.pageSize;
+  const endIndex = startIndex + this.pageSize;
+  return this.userList && this.userList.slice(startIndex, endIndex);
+}
  adminApproval( status: any,reason:any){
   //(status);
   //(this.selectedBlog._id);
