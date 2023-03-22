@@ -1,0 +1,72 @@
+<script>
+    $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+        </script>
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+          <h3>Blogging</h3>
+        </div>
+      
+        <ul class="list-unstyled components">
+          <p>Admin Dashboard</p>
+          <li class="active">
+            <a routerLink="/admin" data-toggle="collapse" aria-expanded="false">Home</a>
+          </li>
+          <li class="has-submenu">
+            <a data-toggle="collapse" href="#userSubmenu" aria-expanded="false">Users</a>
+            <ul class="collapse list-unstyled" id="userSubmenu">
+              <li><a routerLink="/approval">Pending Users<span class="ml-4 bg-white pl-1 pr-1 rounded-circle  text-danger">{{pendingUserList ? pendingUserList.length : 0}}</span></a></li>
+              <li><a routerLink="/alluser">All Users</a></li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <a data-toggle="collapse" href="#blogSubmenu" aria-expanded="false">Blogs</a>
+            <ul class="collapse list-unstyled" id="blogSubmenu">
+              <li><a routerLink="/pendingblog">Pending Blogs<span class="ml-4 bg-white pl-1 pr-1 rounded-circle  text-danger">{{pendingBlogList ? pendingBlogList.length : 0}}</span></a></li>
+              <li><a routerLink="/allblog">All Blogs</a></li>
+            </ul>
+          </li>
+        </ul>
+      
+        <ul class="list-unstyled CTAs logout">
+          <li>
+            <a (click)="Logout()">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+             <h1 class="text-center text-primary">Dashboard</h1>
+                <!-- <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle</span>
+                </button> -->
+                
+    </div>
+                
+        </nav>
+        <div class="dashboard-boxes">
+            <div class="user-box">
+              <h2>All Users</h2>
+              <p>Total Users</p>
+              <p>{{userList.length}}</p>
+            </div>
+            <div class="blog-box">
+              <h2>All Blogs</h2>
+              <p>Number of Blogs</p>
+              <p>{{blogList.length}}</p>
+            </div>
+          </div>
+          
+       
+    </div>
+</div>
+

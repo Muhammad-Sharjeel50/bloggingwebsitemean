@@ -1,49 +1,205 @@
-<div class="text-center mt-5 text-primary">
-  <h1>Welcome to Blogging Website</h1>
-  <h3>Explore the blogging world</h3>
-  </div>
-<div class="container ">
-	<div class="registration mt-5 bg-white shadow mx-auto d-block border br-3 p-4 rounded border-2 border-black w-100">
-		<div class="page-header text-center">
-			<h1>Sign up</h1>
-		</div>
+<!-- <router-outlet></router-outlet> -->
+<!-- New Account Form -->
+<div class="background-image">
+  <section>
+   
+    <div class="login-root">
+      <div
+        class="box-root flex-flex flex-direction--column"
+        style="min-height: 100vh; flex-grow: 1"
+      >
+        <div class="loginbackground box-background--white padding-top--64">
+          <div class="loginbackground-gridContainer">
+            <div
+              class="box-root flex-flex"
+              style="grid-area: top / start / 8 / end"
+            >
+              <div
+                class="box-root"
+                style="
+                  background-image: linear-gradient(
+                    white 0%,
+                    rgb(247, 250, 252) 33%
+                  );
+                  flex-grow: 1;
+                "
+              ></div>
+            </div>
+            <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5">
+              <div
+                class="box-root box-divider--light-all-2 animationLeftRight tans3s"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div
+              class="box-root flex-flex"
+              style="grid-area: 6 / start / auto / 2"
+            >
+              <div
+                class="box-root box-background--blue800"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div
+              class="box-root flex-flex"
+              style="grid-area: 7 / start / auto / 4"
+            >
+              <div
+                class="box-root box-background--blue animationLeftRight"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6">
+              <div
+                class="box-root box-background--gray100 animationLeftRight tans3s"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div
+              class="box-root flex-flex"
+              style="grid-area: 2 / 15 / auto / end"
+            >
+              <div
+                class="box-root box-background--cyan200 animationRightLeft tans4s"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div
+              class="box-root flex-flex"
+              style="grid-area: 3 / 14 / auto / end"
+            >
+              <div
+                class="box-root box-background--blue animationRightLeft"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div
+              class="box-root flex-flex"
+              style="grid-area: 4 / 17 / auto / 20"
+            >
+              <div
+                class="box-root box-background--gray100 animationRightLeft tans4s"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div
+              class="box-root flex-flex"
+              style="grid-area: 5 / 14 / auto / 17"
+            >
+              <div
+                class="box-root box-divider--light-all-2 animationRightLeft tans3s"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="box-root padding-top--24 flex-flex flex-direction--column"
+          style="flex-grow: 1; z-index: 9"
+        >
+          <div
+            class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center"
+          >
+            <h1><a>New Account</a></h1>
+          </div>
+          <div
+            class="box-root flex-flex flex-justifyContent--center error"
+          ></div>
+          <div class="formbg-outer">
+            <div class="formbg">
+              <div class="formbg-inner padding-horizontal--48">
+                <h5 class="padding-bottom--15">Create your account</h5>
 
-		<form id="member-registration" #loginForm="ngForm" (ngSubmit)="LoginUser(loginForm.value)" class="form-validate form-horizontal well" enctype="multipart/form-data">
-			<fieldset>
+                <form
+                  name="myForm"
+                  id="stripe-login"
+                  id="member-registration"
+                  #loginForm="ngForm"
+                  (ngSubmit)="LoginUser(loginForm.value)"
+                  class="form-validate form-horizontal well"
+                  enctype="multipart/form-data"
+                >
+                  <div class="field padding-bottom--24">
+                    <label for="email">Email</label>
 
-				<div class="form-group">
-					<label for="exampleInputPassword1">Signup Type</label>
-					<select name="role" class="form-control" ngModel>
-            <option name="role" value="Author">Author</option>
-            <option name="role" value="User">User</option>
+                    <input
+					type="text"
+					pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+					[(ngModel)]="user.email"
+					name="email"
+					#email="ngModel"
+					placeholder="Enter  Email"
+					required
+					email
+                    />
+                    <br />
 
-          </select>
-				</div>
-				<div class="form-group">
-					<label for="exampleInputPassword1">Username *</label>
-					<input type="text" class="form-control" required #name="ngModel" name="userName" id="exampleInputPassword1" ngModel >
-          <span *ngIf="name.invalid && name.touched" style="color:red;">Username is required</span>
-				</div>
-				<div class="form-group">
-					<label for="exampleInputPassword1">Password *</label>
-					<input type="password" minlength="8" #password="ngModel" class="form-control" name="password" id="exampleInputPassword1" ngModel required>
-          <span *ngIf="password.invalid && password.touched" style="color:red;">password is required and length must be greater than 8</span>
-				</div>
-				<div class="form-group">
-					<label for="exampleInputEmail1">Email Address *</label>
-					<input type="email" email class="form-control" #email="ngModel" name="email" id="exampleInputEmail1" ngModel required>
-          <span *ngIf="email.invalid && email.touched" style="color:red;">Email is required</span>
-				</div>
+					<span
+					class="text-danger"
+					*ngIf="email.errors && email.errors.pattern"
+				>
+					Enter a valid email address
+				</span>
+                  </div>
 
-				<div class="d-flex justify-content-between mt-3 align-items-center">
-					<div class="form-group    d-flex justify-content-start">
-						<button type="submit" [disabled]="loginForm.invalid" class="p-2 btn btn-primary ">Register</button>
-					</div>
-					<div class="form-check form-group d-flex justify-content-end">
-						<a routerLink="/">Login instead</a>
-					</div>
-				</div>
-			</fieldset>
-		</form>
-	</div>
+                  <div class="field padding-bottom--24">
+                    <div class="grid--50-50">
+                      <label for="password">Password</label>
+                     
+                    </div>
+                    <input
+                      type="password"
+                      name="password"
+                      #password="ngModel"
+                      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,}$"
+                      id="exampleInputPassword1"
+                      ngModel
+                      required
+                      placeholder="Enter your password"
+                      minlength="12"
+                    />
+                    <span
+                      *ngIf="password.invalid && password.touched && password"
+                      class="text-danger text-sm"
+                      >Valid password is required, length must be greater than 12 and contains(uppercase,lowercase and numbers)</span
+                    >
+                  </div>
+                  <div
+                    class="field field-checkbox padding-bottom--24 flex-flex align-center"
+                  >
+                    <!-- <label for="checkbox">
+                      <input type="checkbox" name="checkbox" /> Remember me
+                    </label> -->
+                  </div>
+                  <div class="field padding-bottom--24">
+                    <input
+                      style="background: blue"
+                      [disabled]="loginForm.invalid"
+                      type="submit"
+                      value="Register"
+                    />
+                  
+                  </div>
+               
+                </form>
+              </div>
+            </div>
+            <div class="footer-link padding-top--24">
+              <span
+                >Already have an account?
+                <a style="color: blue; cursor: pointer" routerLink="/login"
+                  >Login here</a
+                ></span
+              >
+              <div
+                class="listing padding-top--24 padding-bottom--24 flex-flex center-center"
+              >
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

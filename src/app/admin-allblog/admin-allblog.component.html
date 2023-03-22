@@ -1,0 +1,100 @@
+ 
+               
+         
+                <div class="wrapper">
+                    <!-- Sidebar  -->
+                    <nav id="sidebar">
+                        <div class="sidebar-header">
+                          <h3>Blogging</h3>
+                        </div>
+                      
+                        <ul class="list-unstyled components">
+                          <p>Admin Dashboard</p>
+                          <li class="active">
+                            <a routerLink="/admin" data-toggle="collapse" aria-expanded="false">Home</a>
+                          </li>
+                          <li class="has-submenu">
+                            <a data-toggle="collapse" href="#userSubmenu" aria-expanded="false">Users</a>
+                            <ul class="collapse list-unstyled" id="userSubmenu">
+                              <li><a routerLink="/approval">Pending Users<span class="ml-4 bg-white pl-1 pr-1 rounded-circle  text-danger">{{pendingUserList ? pendingUserList.length : 0}}</span></a></li>
+                              <li><a routerLink="/alluser">All Users</a></li>
+                            </ul>
+                          </li>
+                          <li class="has-submenu">
+                            <a data-toggle="collapse" href="#blogSubmenu" aria-expanded="false">Blogs</a>
+                            <ul class="collapse list-unstyled" id="blogSubmenu">
+                              <li><a routerLink="/pendingblog">Pending Blogs<span class="ml-4 bg-white pl-1 pr-1 rounded-circle  text-danger">{{pendingBlogList ? pendingBlogList.length : 0}}</span></a></li>
+                              <li><a routerLink="/allblog">All Blogs</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      
+                        <ul class="list-unstyled CTAs ">
+                          <li >
+                            <a  (click)="Logout()">Logout</a>
+                          </li>
+                        </ul>
+                      </nav>
+                
+                    <!-- Page Content  -->
+                    <div id="content">
+                
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <div class="container-fluid">
+                             <h1 class="text-center text-primary">Dashboard</h1>
+                    </div>
+                                
+                        </nav>
+                        <div class="container">
+                            <div class="table-wrapper">
+                              
+                              <table class="table table-striped table-hover" >
+                                <thead>
+                                  <tr>
+                                    <th>Sr</th>
+                                    <th>Email</th>
+                                    <th>AuthorId</th>
+                                    <th>role</th>
+                                  
+                                  </tr>
+                                </thead>
+                                <tbody >
+                                  <tr  *ngFor="let blog of userList; let i=index ">
+                                   
+                                    <td>{{i+1}}</td>
+                                    <td>{{blog.Email}}</td>
+                                    <td>{{blog._id}}</td>
+                                    <td>{{blog.role}}</td>
+                                   
+                       </tr>
+                       </tbody>
+                              </table>
+                    </div>
+                </div>         
+      <script>
+        $(document).ready(function(){
+        // Activate tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+        
+        // Select/Deselect checkboxes
+        var checkbox = $('table tbody input[type="checkbox"]');
+        $("#selectAll").click(function(){
+            if(this.checked){
+                checkbox.each(function(){
+                    this.checked = true;                        
+                });
+            } else{
+                checkbox.each(function(){
+                    this.checked = false;                        
+                });
+            } 
+        });
+        checkbox.click(function(){
+            if(!this.checked){
+                $("#selectAll").prop("checked", false);
+            }
+        });
+    });
+    
+      </script>
+    

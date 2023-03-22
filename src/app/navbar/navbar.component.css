@@ -180,3 +180,64 @@
 		width: 100%;
 	}
 }
+
+.button-adjust{
+    display: flex;
+    justify-content: right;
+    align-content: right;
+    /* height:50px; */
+    /* align-items: space; */
+  }
+
+  /* Style the dropdown button */
+.dropbtn {
+  background: none;
+  border: none;
+  /* color: #333; */
+  border-radius: 50%;
+}
+
+/* Style the profile picture */
+.profile-picture {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* margin-right: 10px; */
+}
+
+/* Style the dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  z-index: 1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Style the links inside the dropdown */
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+.modal {
+	z-index: 1050; /* make sure this value is higher than the backdrop's z-index */
+  }
+  
+  .modal-backdrop {
+	z-index: 1040;
+  }

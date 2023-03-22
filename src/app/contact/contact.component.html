@@ -1,38 +1,82 @@
-<section id="contact">
-  <div class="contact-box">
-    <div class="contact-links">
-      <h2>CONTACT</h2>
-      <div class="links">
-        <div class="link">
-          <a><img src="https://i.postimg.cc/m2mg2Hjm/linkedin.png" alt="linkedin"></a>
-        </div>
-        <div class="link">
-          <a><img src="https://i.postimg.cc/YCV2QBJg/github.png" alt="github"></a>
-        </div>
-        <div class="link">
-          <a><img src="https://i.postimg.cc/W4Znvrry/codepen.png" alt="codepen"></a>
-        </div>
-        <div class="link">
-          <a><img src="https://i.postimg.cc/NjLfyjPB/email.png" alt="email"></a>
-        </div>
-      </div>
-    </div>
-    <div class="contact-form-wrapper">
-      <form>
-        <div class="form-item">
-          <input type="text" name="sender" required>
-          <label>Name:</label>
-        </div>
-        <div class="form-item">
-          <input type="text" name="email" required>
-          <label>Email:</label>
-        </div>
-        <div class="form-item">
-          <textarea class="" name="message" required></textarea>
-          <label>Message:</label>
-        </div>
-        <button class="submit-btn">Send</button>
-      </form>
-    </div>
-  </div>
-</section>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css">
+	<link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Roboto&display=swap" rel="stylesheet">
+<app-navbar></app-navbar>
+<div>
+	<!-- START CONTACT SECTION -->
+	<div class="container">
+		<div class="section-contact">
+		  <div class="row justify-content-center">
+			<div class="col-12 col-lg-10 col-xl-8">
+			  <div class="header-section text-center">
+				<h2 class="title">
+				  <span class="dot"></span>
+				  SEND US A MESSAGE
+				</h2>
+				<p class="description">Welcome to Blogging. Send us your problem and feedback. We are happy to respond to your message.</p>
+			  </div>
+			</div>
+		  </div>
+		  <div class="form-contact">
+			<form (ngSubmit)="submit()" #contactForm="ngForm">
+			  <div class="row">
+				<div class="col-md-6">
+				  <div class="single-input">
+					<i class="fas fa-user"></i>
+					<input type="text" id="name" name="name" class="form-control" [(ngModel)]="name" name="name" required placeholder="ENTER YOUR NAME">
+				  </div>
+				  <span *ngIf="name && name.trim().length < 5" class="text-danger" data-ng-message="name">
+					Name is Required
+				  </span>
+				</div>
+				<div class="col-md-6">
+				  <div class="single-input">
+					<i class="fas fa-envelope"></i>
+					<input type="email" id="email" name="email" class="form-control" [(ngModel)]="email" name="email" placeholder="ENTER YOUR EMAIL" required>
+				  </div>
+				  <span *ngIf="!contactForm.controls['email'].valid && contactForm.controls['email'].touched" class="text-danger" data-ng-message="email">
+					Please enter a valid email
+				  </span>
+				</div>
+				<div class="col-md-6">
+				  <div class="single-input">
+					<i class="fas fa-phone"></i>
+					<input type="text" name="number" id="number" name="number" class="form-control" [(ngModel)]="number" name="number" placeholder="ENTER YOUR PHONE NUMBER" required>
+				  </div>
+				  <span *ngIf="!contactForm.controls['number'].valid && contactForm.controls['number'].touched" class="text-danger" data-ng-message="number">
+					Please enter a valid phone number
+				  </span>
+				</div>
+				<div class="col-md-6">
+				  <div class="single-input">
+					<i class="fas fa-check"></i>
+					<input type="text" id="subject" name="subject" class="form-control" [(ngModel)]="subject" name="subject" placeholder="ENTER YOUR SUBJECT" required>
+				  </div>
+				  <span *ngIf="subject && subject.trim().length < 5" class="text-danger" data-ng-message="subject">
+					Subject is Required
+				  </span>
+				</div>
+				<div class="col-12">
+				  <div class="single-input">
+					<i class="fas fa-comment-dots"></i>
+					<textarea placeholder="ENTER YOUR MESSAGE" id="message" name="message" class="form-control" [(ngModel)]="message" required></textarea>
+				  </div>
+				  <span *ngIf="message && message.trim().length < 5" class="text-danger" data-ng-message="message">
+					Message is Required
+				  </span>
+						</div>
+						<div class="col-12">
+							<div class="submit-input text-center">
+							  <input type="submit" [disabled]="message" (click)="submit()" name="submit" value="SUBMIT NOW">
+							</div>
+						  </div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- / END CONTACT SECTION -->
+	</div>
+
+<!-- Image credit: Oliver Sjöström https://www.pexels.com/photo/body-of-water-near-green-mountain-931018/  -->
